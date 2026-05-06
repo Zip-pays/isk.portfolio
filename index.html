@@ -52,84 +52,94 @@
 
 <div class="mx-auto max-w-md px-5 pt-6 pb-16">
 
-  <!-- Header -->
-  <header class="flex items-center justify-between animate-fade">
-    <div class="flex items-center gap-3">
-      <!-- Replace src below with your own avatar image -->
-      <img id="avatar" src="9bf0e458-ed26-4956-9b28-0e7118e7fec3.jpeg" alt="Profile avatar"
-           class="h-12 w-12 rounded-full object-cover ring-2 ring-mint/60" />
-      <div class="leading-tight">
-        <p class="text-[11px] uppercase tracking-wider text-slate-500">Account holder</p>
-        <p class="text-base font-semibold">~W Kieran J Pattinson</p>
+  <!-- Welcome Screen -->
+  <div id="screen-welcome" class="animate-fade">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold mt-16">Welcome Back</h1>
+      <p class="text-slate-500 mt-2">~W Kieran J Pattinson</p>
+    </div>
+    <button onclick="goHoldings()" class="btn btn-ripple mt-12 w-full rounded-xl bg-mint text-white py-4 text-lg font-semibold">View Holdings</button>
+  </div>
+
+  <!-- Holdings Screen -->
+  <div id="screen-holdings" class="hidden-x">
+    <header class="flex items-center justify-between animate-fade">
+      <div class="flex items-center gap-3">
+        <img id="avatar" src="9bf0e458-ed26-4956-9b28-0e7118e7fec3.jpeg" alt="Profile avatar"
+             class="h-12 w-12 rounded-full object-cover ring-2 ring-mint/60" />
+        <div class="leading-tight">
+          <p class="text-[11px] uppercase tracking-wider text-slate-500">Account holder</p>
+          <p class="text-base font-semibold">~W Kieran J Pattinson</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="btn h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center" aria-label="Search">🔍</button>
+        <button class="btn h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center relative" aria-label="Notifications">
+          🔔<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Recovery banner -->
+    <div class="mt-5 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 animate-fade">
+      <span class="text-amber-500 text-xl leading-none">🛡️</span>
+      <div>
+        <p class="text-sm font-semibold text-amber-900">Account Recovery Active</p>
+        <p class="text-xs text-amber-800/80">Verification required for full access.</p>
       </div>
     </div>
-    <div class="flex items-center gap-2">
-      <button class="btn h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center" aria-label="Search">🔍</button>
-      <button class="btn h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center relative" aria-label="Notifications">
-        🔔<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger"></span>
-      </button>
-    </div>
-  </header>
 
-  <!-- Recovery banner -->
-  <div class="mt-5 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 animate-fade">
-    <span class="text-amber-500 text-xl leading-none">🛡️</span>
-    <div>
-      <p class="text-sm font-semibold text-amber-900">Account Recovery Active</p>
-      <p class="text-xs text-amber-800/80">Verification required for full access.</p>
-    </div>
-  </div>
+    <!-- Balance card -->
+    <section class="mt-5 rounded-3xl bg-ink text-white p-6 shadow-glow animate-pop">
+      <div class="flex items-center justify-between">
+        <p class="text-[11px] tracking-[0.2em] text-white/50">AVAILABLE BALANCE</p>
+        <span class="rounded-full border border-mint/40 px-3 py-1 text-xs font-medium text-mint">USD</span>
+      </div>
+      <div class="mt-4 flex items-end gap-1">
+        <span class="text-5xl font-bold tracking-tight">$200,000</span>
+        <span class="pb-2 text-2xl font-bold text-white/30">.00</span>
+      </div>
+      <p class="mt-1 text-xs text-white/50">Recoverable funds · pending verification</p>
 
-  <!-- Balance card -->
-  <section class="mt-5 rounded-3xl bg-ink text-white p-6 shadow-glow animate-pop">
-    <div class="flex items-center justify-between">
-      <p class="text-[11px] tracking-[0.2em] text-white/50">AVAILABLE BALANCE</p>
-      <span class="rounded-full border border-mint/40 px-3 py-1 text-xs font-medium text-mint">USD</span>
-    </div>
-    <div class="mt-4 flex items-end gap-1">
-      <span class="text-5xl font-bold tracking-tight">$200,000</span>
-      <span class="pb-2 text-2xl font-bold text-white/30">.00</span>
-    </div>
-    <p class="mt-1 text-xs text-white/50">Recoverable funds · pending verification</p>
+      <div class="mt-5 grid grid-cols-4 gap-2">
+        <button onclick="openWithdraw()" class="btn btn-ripple flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-mint py-4 text-white">
+          <span class="text-lg">⬆️</span><span class="text-xs font-semibold">Withdraw</span>
+        </button>
+        <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
+          <span class="text-lg">📤</span><span class="text-xs font-semibold">Send</span>
+        </button>
+        <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
+          <span class="text-lg">⬇️</span><span class="text-xs font-semibold">Top Up</span>
+        </button>
+        <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
+          <span class="text-lg">🔁</span><span class="text-xs font-semibold">Exchange</span>
+        </button>
+      </div>
+    </section>
 
-    <div class="mt-5 grid grid-cols-4 gap-2">
-      <button onclick="openWithdraw()" class="btn btn-ripple flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-mint py-4 text-white">
-        <span class="text-lg">⬆️</span><span class="text-xs font-semibold">Withdraw</span>
-      </button>
-      <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
-        <span class="text-lg">📤</span><span class="text-xs font-semibold">Send</span>
-      </button>
-      <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
-        <span class="text-lg">⬇️</span><span class="text-xs font-semibold">Top Up</span>
-      </button>
-      <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
-        <span class="text-lg">🔁</span><span class="text-xs font-semibold">Exchange</span>
-      </button>
+    <!-- Method cards -->
+    <div class="mt-5 grid grid-cols-2 gap-3 animate-fade">
+      <div class="rounded-2xl border border-slate-200 bg-white p-4">
+        <div class="text-2xl">🏦</div>
+        <p class="mt-6 text-xs text-slate-500">Bank Transfer</p>
+        <p class="text-sm font-semibold">SWIFT · Wire</p>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-4">
+        <div class="text-2xl">₿</div>
+        <p class="mt-6 text-xs text-slate-500">Crypto</p>
+        <p class="text-sm font-semibold">BTC Network</p>
+      </div>
     </div>
-  </section>
 
-  <!-- Method cards -->
-  <div class="mt-5 grid grid-cols-2 gap-3 animate-fade">
-    <div class="rounded-2xl border border-slate-200 bg-white p-4">
-      <div class="text-2xl">🏦</div>
-      <p class="mt-6 text-xs text-slate-500">Bank Transfer</p>
-      <p class="text-sm font-semibold">SWIFT · Wire</p>
+    <!-- Recent activity -->
+    <div class="mt-6 flex items-center justify-between">
+      <h2 class="text-lg font-bold">Recent Activity</h2>
+      <button class="text-sm font-medium text-mint">See all</button>
     </div>
-    <div class="rounded-2xl border border-slate-200 bg-white p-4">
-      <div class="text-2xl">₿</div>
-      <p class="mt-6 text-xs text-slate-500">Crypto</p>
-      <p class="text-sm font-semibold">BTC Network</p>
+    <div class="mt-3 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
+      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">🕒</div>
+      <p class="text-sm text-slate-500">No transactions yet</p>
     </div>
-  </div>
-
-  <!-- Recent activity -->
-  <div class="mt-6 flex items-center justify-between">
-    <h2 class="text-lg font-bold">Recent Activity</h2>
-    <button class="text-sm font-medium text-mint">See all</button>
-  </div>
-  <div class="mt-3 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">🕒</div>
-    <p class="text-sm text-slate-500">No transactions yet</p>
   </div>
 
 </div>
@@ -166,28 +176,28 @@
   <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop">
     <h3 class="text-lg font-bold">Bank account details</h3>
     <p class="text-sm text-slate-500 mt-1">Enter your receiving bank info.</p>
-    <form onsubmit="event.preventDefault();submitReceiver('bank')" class="mt-4 space-y-3">
+    <form onsubmit="event.preventDefault();submitBankForm()" class="mt-4 space-y-3">
       <div>
         <label class="text-xs font-medium text-slate-600">Account holder name</label>
-        <input required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="Full name" />
+        <input id="bank-name" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="Full name" />
       </div>
       <div>
         <label class="text-xs font-medium text-slate-600">Bank name</label>
-        <input required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="e.g. Barclays" />
+        <input id="bank-bank" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="e.g. Barclays" />
       </div>
       <div class="grid grid-cols-2 gap-3">
         <div>
           <label class="text-xs font-medium text-slate-600">Account number</label>
-          <input required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="00000000" />
+          <input id="bank-account" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="00000000" />
         </div>
         <div>
           <label class="text-xs font-medium text-slate-600">Sort / Routing</label>
-          <input required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="00-00-00" />
+          <input id="bank-routing" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="00-00-00" />
         </div>
       </div>
       <div>
         <label class="text-xs font-medium text-slate-600">SWIFT / BIC</label>
-        <input class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="Optional" />
+        <input id="bank-swift" class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="Optional" />
       </div>
       <div class="flex gap-2 pt-2">
         <button type="button" onclick="closeAll()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Back</button>
@@ -202,14 +212,14 @@
   <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop">
     <h3 class="text-lg font-bold">Bitcoin wallet address</h3>
     <p class="text-sm text-slate-500 mt-1">Enter the BTC address that will receive your funds.</p>
-    <form onsubmit="event.preventDefault();submitReceiver('btc')" class="mt-4 space-y-3">
+    <form onsubmit="event.preventDefault();submitBtcForm()" class="mt-4 space-y-3">
       <div>
         <label class="text-xs font-medium text-slate-600">BTC Address</label>
-        <input required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm font-mono" placeholder="bc1q…" />
+        <input id="btc-address" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm font-mono" placeholder="bc1q…" />
       </div>
       <div>
         <label class="text-xs font-medium text-slate-600">Network</label>
-        <select class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white">
+        <select id="btc-network" class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white">
           <option>Bitcoin (BTC)</option>
           <option>Lightning</option>
         </select>
@@ -222,12 +232,34 @@
   </div>
 </div>
 
+<!-- Confirmation -->
+<div id="m-confirm" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4 overflow-y-auto">
+  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop my-8">
+    <h3 class="text-lg font-bold">Confirm transaction</h3>
+    <p class="text-sm text-slate-500 mt-1">Review your withdrawal details below.</p>
+
+    <div id="confirm-details" class="mt-4 rounded-2xl bg-slate-50 p-4 text-sm space-y-3">
+      <!-- Dynamically populated -->
+    </div>
+
+    <div class="mt-4 rounded-2xl bg-slate-50 p-4 text-sm space-y-2">
+      <div class="flex justify-between"><span class="text-slate-500">Withdrawal</span><span class="font-semibold">$200,000.00</span></div>
+      <div class="flex justify-between border-t border-slate-200 pt-2"><span class="font-semibold">Total</span><span class="font-semibold text-mint">$200,000.00</span></div>
+    </div>
+
+    <div class="mt-5 flex gap-2">
+      <button onclick="closeAll()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Back</button>
+      <button onclick="processTransaction()" class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold">Confirm</button>
+    </div>
+  </div>
+</div>
+
 <!-- Loading -->
 <div id="m-loading" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
   <div class="w-full max-w-md rounded-3xl bg-white p-8 animate-pop text-center">
     <div class="mx-auto h-14 w-14 rounded-full border-4 border-mint/20 border-t-mint spin"></div>
-    <p class="mt-5 font-semibold">Preparing secure withdrawal…</p>
-    <p class="text-sm text-slate-500" id="loading-sub">Connecting to settlement network</p>
+    <p class="mt-5 font-semibold">Processing transaction…</p>
+    <p class="text-sm text-slate-500" id="loading-sub">Verifying account details</p>
     <div class="mt-5 h-2 w-full rounded-full bg-slate-100 overflow-hidden">
       <div id="bar" class="h-full bg-mint transition-all duration-100 ease-linear" style="width:0%"></div>
     </div>
@@ -235,50 +267,24 @@
   </div>
 </div>
 
-<!-- Face verification -->
-<div id="m-verify" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
-  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop">
-    <h3 class="text-lg font-bold text-center">Face verification</h3>
-    <p class="text-sm text-slate-500 text-center mt-1">Position your face inside the frame.</p>
-    <div class="relative mx-auto mt-5 h-56 w-56 rounded-full bg-slate-50 face-frame pulse-ring overflow-hidden flex items-center justify-center">
-      <span class="text-6xl">😀</span>
-      <div class="scan-line"></div>
-    </div>
-    <button onclick="goFee()" class="btn btn-ripple mt-6 w-full rounded-xl bg-mint text-white py-3 font-semibold">Start verification</button>
-  </div>
-</div>
-
-<!-- Fee / payment -->
-<div id="m-fee" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4 overflow-y-auto">
+<!-- Error -->
+<div id="m-error" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4 overflow-y-auto">
   <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop my-8">
-    <div class="flex items-center gap-2">
-      <span class="text-amber-500 text-xl">⚠️</span>
-      <h3 class="text-lg font-bold">Verification payment required</h3>
+    <div class="flex items-center gap-2 mb-2">
+      <span class="text-danger text-2xl">❌</span>
+      <h3 class="text-lg font-bold text-danger">Transaction Failed</h3>
     </div>
-    <p class="text-sm text-slate-500 mt-1">
-      A one-time verification payment of <span class="font-semibold text-slate-900">$500</span> is required to release your funds.
-      Please send the payment to the verified BTC address below.
-    </p>
+    <p class="text-sm text-slate-500 mt-1" id="error-message">An error occurred processing your withdrawal.</p>
 
-    <div class="mt-4 rounded-2xl bg-slate-50 p-4 text-sm space-y-2">
-      <div class="flex justify-between"><span class="text-slate-500">Withdrawal</span><span class="font-semibold">$200,000.00</span></div>
-      <div class="flex justify-between"><span class="text-slate-500">Verification fee</span><span class="font-semibold">$500.00</span></div>
-      <div class="flex justify-between border-t border-slate-200 pt-2"><span class="font-semibold">You receive</span><span class="font-semibold text-mint">$200,000.00</span></div>
-    </div>
-
-    <div class="mt-4 rounded-2xl border border-slate-200 p-4">
-      <p class="text-xs uppercase tracking-wider text-slate-500">Verified BTC payment address</p>
-      <div class="mt-2 flex items-center gap-2">
-        <code id="btc-addr" class="flex-1 break-all rounded-lg bg-slate-50 px-3 py-2 text-xs font-mono">bc1q5mtqsh96qmnesfrn0dtc9je2e2ts904pnpswvc</code>
-        <button onclick="copyAddr(this)" class="copy-btn btn rounded-lg bg-slate-900 text-white px-3 py-2 text-xs font-semibold">Copy</button>
-      </div>
-      <p class="mt-2 text-[11px] text-slate-500">Send exactly $500 in BTC. Funds release automatically after 1 confirmation.</p>
+    <div class="mt-4 rounded-2xl border border-danger/20 bg-danger/5 p-4">
+      <p class="text-xs uppercase tracking-wider text-danger font-semibold mb-1">Error Details</p>
+      <p class="text-sm text-slate-700" id="error-details"></p>
     </div>
 
     <div class="mt-5 flex gap-2">
-      <button onclick="closeAll()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Later</button>
+      <button onclick="resetFlow()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Try Again</button>
       <a href="https://t.me/customer_assist01" target="_blank" rel="noopener"
-         class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold text-center">Contact support</a>
+         class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold text-center">Contact Support</a>
     </div>
   </div>
 </div>
@@ -288,48 +294,125 @@
 
 <script>
   const $ = (id) => document.getElementById(id);
-  const modals = ['m-method','m-bank','m-btc','m-loading','m-verify','m-fee'];
+  const screens = ['screen-welcome', 'screen-holdings'];
+  const modals = ['m-method', 'm-bank', 'm-btc', 'm-confirm', 'm-loading', 'm-error'];
 
-  function show(id){ modals.forEach(m => $(m).classList.add('hidden-x')); if(id) $(id).classList.remove('hidden-x'); }
-  function closeAll(){ show(null); }
-  function openWithdraw(){ show('m-method'); }
-  function chooseMethod(t){ show(t==='bank' ? 'm-bank' : 'm-btc'); }
+  let receiverData = { type: null };
+  const errors = [
+    'Insufficient verification level. Please contact support.',
+    'Account temporarily locked. Security review in progress.',
+    'Network error. Unable to process at this time.',
+    'Transaction declined by settlement partner.',
+    'Invalid account information provided.',
+    'Daily withdrawal limit exceeded.',
+    'Payment processor unavailable. Try again later.'
+  ];
 
-  function submitReceiver(){
+  function show(id) {
+    modals.forEach(m => $(m).classList.add('hidden-x'));
+    if (id) $(id).classList.remove('hidden-x');
+  }
+
+  function showScreen(id) {
+    screens.forEach(s => $(s).classList.add('hidden-x'));
+    if (id) $(id).classList.remove('hidden-x');
+  }
+
+  function closeAll() {
+    show(null);
+  }
+
+  function goHoldings() {
+    showScreen('screen-holdings');
+  }
+
+  function openWithdraw() {
+    show('m-method');
+  }
+
+  function chooseMethod(type) {
+    receiverData.type = type;
+    show(type === 'bank' ? 'm-bank' : 'm-btc');
+  }
+
+  function submitBankForm() {
+    receiverData.holderName = $('bank-name').value;
+    receiverData.bankName = $('bank-bank').value;
+    receiverData.accountNumber = $('bank-account').value;
+    receiverData.routing = $('bank-routing').value;
+    receiverData.swift = $('bank-swift').value;
+    showConfirmation();
+  }
+
+  function submitBtcForm() {
+    receiverData.address = $('btc-address').value;
+    receiverData.network = $('btc-network').value;
+    showConfirmation();
+  }
+
+  function showConfirmation() {
+    const details = $('confirm-details');
+    let html = '';
+
+    if (receiverData.type === 'bank') {
+      html = `
+        <div><span class="text-slate-500">Method</span><span class="font-semibold">Bank Transfer</span></div>
+        <div><span class="text-slate-500">Account Holder</span><span class="font-semibold">${receiverData.holderName}</span></div>
+        <div><span class="text-slate-500">Bank</span><span class="font-semibold">${receiverData.bankName}</span></div>
+        <div><span class="text-slate-500">Account #</span><span class="font-mono text-xs">${receiverData.accountNumber}</span></div>
+        <div><span class="text-slate-500">Routing</span><span class="font-mono text-xs">${receiverData.routing}</span></div>
+        ${receiverData.swift ? `<div><span class="text-slate-500">SWIFT</span><span class="font-mono text-xs">${receiverData.swift}</span></div>` : ''}
+      `;
+    } else {
+      html = `
+        <div><span class="text-slate-500">Method</span><span class="font-semibold">Bitcoin (BTC)</span></div>
+        <div><span class="text-slate-500">Network</span><span class="font-semibold">${receiverData.network}</span></div>
+        <div class="break-all"><span class="text-slate-500">Address</span><span class="font-mono text-xs">${receiverData.address}</span></div>
+      `;
+    }
+
+    details.innerHTML = html;
+    show('m-confirm');
+  }
+
+  function processTransaction() {
     show('m-loading');
     const bar = $('bar'), pct = $('pct'), sub = $('loading-sub');
-    const subs = ['Connecting to settlement network','Validating receiver details','Encrypting transaction','Authorizing release'];
-    let elapsed = 0, total = 12000, step = 100;
+    const subs = ['Verifying account details', 'Processing payment', 'Validating transaction', 'Finalizing transfer'];
+    let elapsed = 0, total = 8000, step = 100;
+    
     const t = setInterval(() => {
       elapsed += step;
-      const p = Math.min(100, (elapsed/total)*100);
+      const p = Math.min(100, (elapsed / total) * 100);
       bar.style.width = p + '%';
       pct.textContent = Math.round(p) + '%';
-      sub.textContent = subs[Math.min(subs.length-1, Math.floor(p/25))];
-      if(elapsed >= total){ clearInterval(t); show('m-verify'); }
+      sub.textContent = subs[Math.min(subs.length - 1, Math.floor(p / 25))];
+      
+      if (elapsed >= total) {
+        clearInterval(t);
+        showError();
+      }
     }, step);
   }
 
-  function goFee(){ show('m-fee'); }
-
-  function copyAddr(btn){
-    const addr = $('btc-addr').textContent.trim();
-    navigator.clipboard?.writeText(addr);
-    btn.textContent = 'Copied';
-    toast('BTC address copied');
-    setTimeout(()=> btn.textContent='Copy', 1500);
+  function showError() {
+    const randomError = errors[Math.floor(Math.random() * errors.length)];
+    $('error-message').textContent = randomError;
+    $('error-details').textContent = `Error Code: ${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+    show('m-error');
   }
 
-  function toast(msg){
-    const t = $('toast'); t.textContent = msg; t.classList.remove('hidden-x');
-    clearTimeout(window._tt); window._tt = setTimeout(()=> t.classList.add('hidden-x'), 1800);
+  function resetFlow() {
+    receiverData = { type: null };
+    closeAll();
   }
 
   document.addEventListener('pointerdown', (e) => {
-    const b = e.target.closest('.btn-ripple'); if(!b) return;
+    const b = e.target.closest('.btn-ripple');
+    if (!b) return;
     const r = b.getBoundingClientRect();
-    b.style.setProperty('--x', (e.clientX-r.left)+'px');
-    b.style.setProperty('--y', (e.clientY-r.top)+'px');
+    b.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    b.style.setProperty('--y', (e.clientY - r.top) + 'px');
   });
 </script>
 </body>
