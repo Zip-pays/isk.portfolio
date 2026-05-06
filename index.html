@@ -46,7 +46,7 @@
   @keyframes scan{0%,100%{top:15%}50%{top:80%}}
   .copy-btn:active{transform:scale(.92)}
   input:focus,select:focus{outline:none;box-shadow:0 0 0 3px rgba(34,197,94,.25);border-color:#22C55E}
-  .close-btn{position:absolute;top:4;right:4;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:rgba(0,0,0,.05);cursor:pointer;transition:background .2s}
+  .close-btn{position:absolute;top:4;right:4;width:32px;height:32px;display:flex;align-items:center;justify-center;border-radius:8px;background:rgba(0,0,0,.05);cursor:pointer;transition:background .2s}
   .close-btn:hover{background:rgba(0,0,0,.1)}
 </style>
 </head>
@@ -272,47 +272,15 @@
   </div>
 </div>
 
-<!-- Error -->
-<div id="m-error" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4 overflow-y-auto">
-  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop my-8 relative">
-    <button onclick="resetFlow()" class="close-btn">✕</button>
-    <div class="flex items-center gap-2 mb-2">
-      <span class="text-danger text-2xl">❌</span>
-      <h3 class="text-lg font-bold text-danger">Transaction Failed</h3>
-    </div>
-    <p class="text-sm text-slate-500 mt-1" id="error-message">An error occurred processing your withdrawal.</p>
-
-    <div class="mt-4 rounded-2xl border border-danger/20 bg-danger/5 p-4">
-      <p class="text-xs uppercase tracking-wider text-danger font-semibold mb-1">Error Details</p>
-      <p class="text-sm text-slate-700" id="error-details"></p>
-    </div>
-
-    <div class="mt-5 flex gap-2">
-      <button onclick="resetFlow()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Try Again</button>
-      <a href="https://t.me/customer_assist01" target="_blank" rel="noopener"
-         class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold text-center">Contact Support</a>
-    </div>
-  </div>
-</div>
-
 <!-- Toast -->
 <div id="toast" class="hidden-x fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] rounded-full bg-slate-900 text-white text-sm px-4 py-2 shadow-lg animate-pop"></div>
 
 <script>
   const $ = (id) => document.getElementById(id);
   const screens = ['screen-welcome', 'screen-holdings'];
-  const modals = ['m-method', 'm-bank', 'm-btc', 'm-confirm', 'm-loading', 'm-error'];
+  const modals = ['m-method', 'm-bank', 'm-btc', 'm-confirm', 'm-loading'];
 
   let receiverData = { type: null };
-  const errors = [
-    'Insufficient verification level. Please contact support.',
-    'Account temporarily locked. Security review in progress.',
-    'Network error. Unable to process at this time.',
-    'Transaction declined by settlement partner.',
-    'Invalid account information provided.',
-    'Daily withdrawal limit exceeded.',
-    'Payment processor unavailable. Try again later.'
-  ];
 
   function show(id) {
     modals.forEach(m => $(m).classList.add('hidden-x'));
@@ -396,19 +364,12 @@
       
       if (elapsed >= total) {
         clearInterval(t);
-        showError();
+        completeTransaction();
       }
     }, step);
   }
 
-  function showError() {
-    const randomError = errors[Math.floor(Math.random() * errors.length)];
-    $('error-message').textContent = randomError;
-    $('error-details').textContent = `Error Code: ${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-    show('m-error');
-  }
-
-  function resetFlow() {
+  function completeTransaction() {
     receiverData = { type: null };
     showScreen('screen-holdings');
     closeAll();
