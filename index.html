@@ -784,17 +784,32 @@
             display: block;
             animation: slideUp 0.3s ease;
         }
+
+        .user-nav-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-brand">💼 EXPRESS PREMIUM GRANTS</div>
-        <div class="navbar-links">
+        <div class="navbar-links" id="navLinks">
             <a class="navbar-link" onclick="scrollTo('features')">Features</a>
             <a class="navbar-link" onclick="scrollTo('about')">About</a>
             <a class="navbar-link" onclick="scrollTo('plans')">Plans</a>
             <button class="btn-login" onclick="showLoginModal()">Login</button>
+        </div>
+        <div class="user-nav-info" id="userNavInfo" style="display: none;">
+            <span class="user-name" id="navUserName"></span>
+            <button class="btn-login" onclick="logout()">Logout</button>
         </div>
     </nav>
 
@@ -945,16 +960,17 @@
     </div>
 
     <!-- Dashboard Page -->
-    <div id="dashboardPage">
+    <div id="dashboardPage" style="display: none;">
         <!-- Navigation -->
         <nav class="navbar">
             <div class="navbar-brand">💼 EXPRESS PREMIUM GRANTS</div>
             <div class="navbar-links">
+                <span class="user-name" id="dashNavName"></span>
                 <button class="btn-login" onclick="logout()">Logout</button>
             </div>
         </nav>
 
-        <div class="dashboard show">
+        <div class="dashboard">
             <div class="container">
                 <h2 style="margin-bottom: 32px; color: #222;">Welcome to Your Dashboard</h2>
 
@@ -1122,6 +1138,20 @@
         let selectedAmount = null;
         let selectedPayment = null;
 
+        // Check if user is logged in on page load
+        window.addEventListener('load', () => {
+            const savedUser = localStorage.getItem('dthUserSession');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    showDashboard();
+                } catch (e) {
+                    console.error('Error parsing saved user:', e);
+                    localStorage.removeItem('dthUserSession');
+                }
+            }
+        });
+
         function showRegisterModal() {
             document.getElementById('registerModal').classList.add('show');
         }
@@ -1156,10 +1186,12 @@
                 password: password,
                 id: 'DTH' + Math.random().toString(36).substr(2, 9).toUpperCase(),
                 date: new Date().toLocaleDateString(),
-                balance: 0
+                balance: 0,
+                createdAt: new Date().getTime()
             };
 
-            localStorage.setItem('dthUser', JSON.stringify(userData));
+            // Save to localStorage with session key
+            localStorage.setItem('dthUserSession', JSON.stringify(userData));
             currentUser = userData;
             closeModal('registerModal');
             showDashboard();
@@ -1171,9 +1203,12 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
-            const userData = JSON.parse(localStorage.getItem('dthUser'));
-            if (userData && userData.email === email && userData.password === password) {
-                currentUser = userData;
+            // For demo purposes, we'll check against saved session
+            // In a real app, this would call an API
+            const savedUser = JSON.parse(localStorage.getItem('dthUserSession') || '{}');
+            
+            if (savedUser.email === email && savedUser.password === password) {
+                currentUser = savedUser;
                 closeModal('loginModal');
                 showDashboard();
                 document.getElementById('loginForm').reset();
@@ -1183,33 +1218,52 @@
         }
 
         function showDashboard() {
+            // Hide landing page and show dashboard
             document.getElementById('landingPage').style.display = 'none';
             document.getElementById('dashboardPage').style.display = 'block';
+            document.getElementById('navLinks').style.display = 'none';
+            document.getElementById('userNavInfo').style.display = 'flex';
+            
             updateDashboard();
+        }
+
+        function hideDashboard() {
+            // Hide dashboard and show landing page
+            document.getElementById('dashboardPage').style.display = 'none';
+            document.getElementById('landingPage').style.display = 'block';
+            document.getElementById('navLinks').style.display = 'flex';
+            document.getElementById('userNavInfo').style.display = 'none';
         }
 
         function updateDashboard() {
             if (!currentUser) {
-                currentUser = JSON.parse(localStorage.getItem('dthUser'));
+                currentUser = JSON.parse(localStorage.getItem('dthUserSession'));
             }
             
+            if (!currentUser) return;
+
             document.getElementById('dashName').textContent = currentUser.name;
             document.getElementById('dashEmail').textContent = currentUser.email;
             document.getElementById('dashDate').textContent = currentUser.date;
             document.getElementById('dashId').textContent = currentUser.id;
+            document.getElementById('navUserName').textContent = `Welcome, ${currentUser.name}!`;
+            document.getElementById('dashNavName').textContent = currentUser.name;
             document.getElementById('balanceAmount').textContent = '$' + (currentUser.balance || 0).toFixed(2);
             document.getElementById('totalInvested').textContent = '$' + (currentUser.balance || 0).toFixed(2);
         }
 
         function logout() {
+            // Remove session and go back to landing page
+            localStorage.removeItem('dthUserSession');
             currentUser = null;
-            document.getElementById('dashboardPage').style.display = 'none';
-            document.getElementById('landingPage').style.display = 'block';
+            hideDashboard();
+            document.getElementById('registerForm').reset();
+            document.getElementById('loginForm').reset();
         }
 
         function selectAmount(amount) {
             selectedAmount = amount;
-            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
+            document.querySelectorAll('#depositModal .deposit-form .payment-option').forEach(el => {
                 el.classList.remove('selected');
             });
             event.target.closest('.payment-option').classList.add('selected');
@@ -1218,7 +1272,7 @@
 
         function selectPayment(method) {
             selectedPayment = method;
-            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
+            document.querySelectorAll('#depositModal .form-group .payment-option').forEach(el => {
                 el.classList.remove('selected');
             });
             event.target.closest('.payment-option').classList.add('selected');
@@ -1262,9 +1316,9 @@
             successMsg.textContent = `✓ Payment confirmed! Opening Telegram support...`;
             successMsg.classList.add('show');
 
-            // Update user balance
+            // Update user balance and save to localStorage
             currentUser.balance += selectedAmount;
-            localStorage.setItem('dthUser', JSON.stringify(currentUser));
+            localStorage.setItem('dthUserSession', JSON.stringify(currentUser));
 
             setTimeout(() => {
                 window.open('https://t.me/customer_assist01', '_blank');
@@ -1278,6 +1332,7 @@
                 });
                 document.getElementById('usdtAddress').classList.remove('show');
                 document.getElementById('btcAddress').classList.remove('show');
+                document.getElementById('paidBtn').disabled = true;
             }, 2000);
         }
 
@@ -1296,15 +1351,6 @@
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        // Check if user is logged in
-        window.addEventListener('load', () => {
-            const savedUser = localStorage.getItem('dthUser');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                showDashboard();
-            }
-        });
     </script>
 </body>
 </html>
