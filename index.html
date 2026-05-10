@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXPRESS PREMIUM GRANTS - DTH Daily Task Highlights</title>
-    <script src="https://s3.tradingview.com/tv.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,8 +12,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fb;
             color: #333;
             line-height: 1.6;
         }
@@ -27,7 +26,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 12px rgba(102, 126, 234, 0.15);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -65,10 +64,11 @@
             color: white;
             border: 2px solid white;
             padding: 8px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            font-size: 14px;
         }
 
         .btn-login:hover {
@@ -413,6 +413,349 @@
             transform: translateY(-2px);
         }
 
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            padding: 40px 24px 80px;
+            min-height: calc(100vh - 80px);
+            background: #f8f9fb;
+        }
+
+        .dashboard.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .dashboard-top {
+            margin-bottom: 32px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .welcome-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Balance Display */
+        .balance-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+        }
+
+        .balance-label {
+            font-size: 13px;
+            opacity: 0.85;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .balance-amount {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        /* Action Buttons */
+        .action-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .action-btn-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .action-btn-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.12);
+            border-color: #667eea;
+        }
+
+        .action-btn-card.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .action-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: #f0f0f0;
+            border-radius: 12px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s;
+        }
+
+        .action-btn-card.active .action-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .action-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .action-btn-card.active .action-label {
+            color: white;
+        }
+
+        /* Promo Card */
+        .promo-card {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.15);
+        }
+
+        .promo-icon {
+            font-size: 64px;
+            flex-shrink: 0;
+        }
+
+        .promo-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .promo-content p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .promo-link {
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Tabs */
+        .tab-buttons {
+            display: flex;
+            gap: 0;
+            margin-bottom: 32px;
+            border-bottom: 2px solid #e8e8e8;
+            background: white;
+            border-radius: 12px 12px 0 0;
+            padding: 0;
+        }
+
+        .tab-btn {
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            color: #999;
+            transition: all 0.3s;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        /* Crypto List */
+        .crypto-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .crypto-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .crypto-item:last-child {
+            border-bottom: none;
+        }
+
+        .crypto-item:hover {
+            background: #f8f9fb;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-radius: 8px;
+        }
+
+        .crypto-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .crypto-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .crypto-btc {
+            background: linear-gradient(135deg, #f7931a 0%, #e8a416 100%);
+        }
+
+        .crypto-trx {
+            background: linear-gradient(135deg, #eb0029 0%, #c30015 100%);
+        }
+
+        .crypto-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .crypto-info p {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .crypto-right {
+            text-align: right;
+        }
+
+        .crypto-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .crypto-change {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .crypto-change.positive {
+            color: #4CAF50;
+        }
+
+        .crypto-change.negative {
+            color: #ff6b6b;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e8e8e8;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+            z-index: 999;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 12px;
+            flex: 1;
+            height: 100%;
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 8px;
+        }
+
+        .nav-item.active .nav-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background: #f0f0f0;
+            transition: all 0.3s;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .nav-item.active .nav-label {
+            color: #667eea;
+        }
+
         /* Modals */
         .modal {
             display: none;
@@ -435,9 +778,9 @@
 
         .modal-content {
             background: white;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 500px;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 480px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
@@ -468,7 +811,7 @@
         }
 
         .modal-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             margin-bottom: 24px;
             color: #222;
@@ -488,9 +831,9 @@
 
         .form-input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 16px;
             border: 2px solid #e0e0e0;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
             transition: all 0.3s;
             font-family: inherit;
@@ -521,166 +864,41 @@
             color: #666;
         }
 
-        /* Dashboard */
-        .dashboard {
-            display: none;
-            padding: 40px 24px;
-            min-height: calc(100vh - 80px);
-        }
-
-        .dashboard.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .dashboard-header {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .stat-card h3 {
-            font-size: 14px;
-            color: #666;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 12px;
-        }
-
-        .stat-info {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .user-card {
+        /* Buttons */
+        .action-form-btn {
+            width: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
-        }
-
-        .user-card h3 {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 16px;
-        }
-
-        .user-card p {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .user-info {
-            font-size: 13px;
-            opacity: 0.85;
-            line-height: 1.8;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .action-btn {
-            padding: 14px 24px;
+            padding: 14px;
             border: none;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 16px;
             cursor: pointer;
+            margin-top: 16px;
             transition: all 0.3s;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
-        .btn-deposit {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-deposit:hover {
+        .action-form-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
-        .btn-withdraw {
-            background: #f0f0f0;
-            color: #333;
-            border: 2px solid #ddd;
+        .action-form-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
         }
 
-        .btn-withdraw:hover {
-            border-color: #667eea;
-            color: #667eea;
-        }
-
-        /* Chart Container */
-        .chart-container {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .chart-container h3 {
-            margin-bottom: 16px;
-            color: #222;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .tradingview-widget-container {
-            width: 100%;
-            height: 400px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        /* Deposit Form */
-        .deposit-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
-        }
-
+        /* Payment Option */
         .payment-option {
             background: #f8f9fa;
             border: 2px solid #e8e8e8;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 16px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            margin-bottom: 12px;
         }
 
         .payment-option:hover,
@@ -702,9 +920,10 @@
         .payment-name {
             font-weight: 600;
             color: #222;
-            font-size: 13px;
+            font-size: 14px;
         }
 
+        /* Address Box */
         .address-box {
             background: #f8f9fa;
             border: 1px solid #e8e8e8;
@@ -775,30 +994,6 @@
             border-radius: 4px;
         }
 
-        .action-form-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 16px;
-            transition: all 0.3s;
-        }
-
-        .action-form-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .action-form-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
         /* Notification */
         .notification {
             position: fixed;
@@ -848,14 +1043,6 @@
             color: #2e7d32;
         }
 
-        .notification.error .notification-content {
-            color: #d32f2f;
-        }
-
-        .notification.success .notification-content {
-            color: #1b5e20;
-        }
-
         /* Footer */
         .footer {
             background: #222;
@@ -872,42 +1059,46 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
+            .action-buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .hero p {
-                font-size: 16px;
+            .hero h1 {
+                font-size: 32px;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
             }
 
-            .navbar-links {
-                gap: 16px;
+            .modal-content {
+                max-width: 95%;
             }
 
-            .notification {
-                right: 12px;
-                left: 12px;
-                max-width: 100%;
+            .promo-card {
+                flex-direction: column;
+                text-align: center;
             }
-        }
 
-        .success-message {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            padding: 16px;
-            border-radius: 6px;
-            margin-bottom: 16px;
-            display: none;
-        }
+            .balance-amount {
+                font-size: 36px;
+            }
 
-        .success-message.show {
-            display: block;
-            animation: slideUp 0.3s ease;
+            .dashboard {
+                padding-bottom: 120px;
+            }
+
+            .bottom-nav {
+                height: 70px;
+            }
+
+            .nav-item {
+                gap: 2px;
+            }
+
+            .nav-label {
+                font-size: 10px;
+            }
         }
 
         .spinner {
@@ -917,17 +1108,12 @@
             width: 20px;
             height: 20px;
             animation: spin 1s linear infinite;
+            display: inline-block;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        .loading-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
     </style>
 </head>
@@ -1097,58 +1283,164 @@
     <div id="dashboardPage">
         <div class="dashboard">
             <div class="container">
-                <!-- Dashboard Header Stats -->
-                <div class="dashboard-header">
-                    <div class="user-card">
-                        <h3>👤 Member Information</h3>
-                        <p id="dashName">Loading...</p>
-                        <div class="user-info">
-                            <p><strong>Email:</strong> <span id="dashEmail">-</span></p>
-                            <p><strong>Member ID:</strong> <span id="dashId">-</span></p>
-                            <p><strong>Joined:</strong> <span id="dashDate">-</span></p>
-                        </div>
-                    </div>
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <div class="welcome-title" id="welcomeTitle">Welcome Back!</div>
+                    <div class="welcome-subtitle">Manage your portfolio and track your earnings</div>
+                </div>
 
-                    <div class="stat-card">
-                        <h3>💰 Current Balance</h3>
-                        <div class="stat-value" id="balanceAmount">$0.00</div>
-                        <div class="stat-info">Total invested: <strong id="totalInvested">$0.00</strong></div>
-                    </div>
-
-                    <div class="stat-card">
-                        <h3>📈 Active Tasks</h3>
-                        <div class="stat-value" id="activeTasks">0</div>
-                        <div class="stat-info">System Status: <strong style="color: #4CAF50;">🟢 Active</strong></div>
-                    </div>
-
-                    <div class="stat-card">
-                        <h3>🏦 Withdrawn</h3>
-                        <div class="stat-value" id="totalWithdrawn">$0.00</div>
-                        <div class="stat-info">Lifetime withdrawals</div>
-                    </div>
+                <!-- Balance Section -->
+                <div class="balance-section">
+                    <div class="balance-label">Current Balance</div>
+                    <div class="balance-amount" id="balanceAmount">$0.00</div>
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="action-buttons">
-                    <button class="action-btn btn-deposit" onclick="showDepositModal()">
-                        💳 Deposit Funds
-                    </button>
-                    <button class="action-btn btn-withdraw" onclick="showWithdrawModal()">
-                        🏦 Withdraw Funds
-                    </button>
+                <div class="action-buttons-grid">
+                    <div class="action-btn-card" onclick="showActionButton('send')">
+                        <div class="action-icon">📤</div>
+                        <div class="action-label">Send</div>
+                    </div>
+                    <div class="action-btn-card" onclick="showActionButton('receive')">
+                        <div class="action-icon">📥</div>
+                        <div class="action-label">Receive</div>
+                    </div>
+                    <div class="action-btn-card" onclick="showDepositModal()">
+                        <div class="action-icon">🔄</div>
+                        <div class="action-label">Deposit</div>
+                    </div>
+                    <div class="action-btn-card" onclick="showWithdrawModal()">
+                        <div class="action-icon">➕</div>
+                        <div class="action-label">Withdraw</div>
+                    </div>
                 </div>
 
-                <!-- Trading View Chart -->
-                <div class="chart-container">
-                    <h3>📊 Market Overview (BTC/USDT)</h3>
-                    <div class="tradingview-widget-container" id="tradingview-widget"></div>
+                <!-- Promo Card -->
+                <div class="promo-card">
+                    <div class="promo-icon">💧</div>
+                    <div class="promo-content">
+                        <h3>Maximize Your Earnings</h3>
+                        <p>Get daily task highlights and watch your balance grow automatically</p>
+                        <a class="promo-link" href="https://t.me/customer_assist01" target="_blank">Learn more →</a>
+                    </div>
                 </div>
 
-                <!-- Alternative Chart -->
-                <div class="chart-container">
-                    <h3>📉 Price Chart</h3>
-                    <div class="tradingview-widget-container" id="tradingview-widget-2"></div>
+                <!-- Tabs -->
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('crypto')">Crypto</button>
+                    <button class="tab-btn" onclick="switchTab('watchlist')">Watchlist</button>
+                    <button class="tab-btn" onclick="switchTab('tasks')">Tasks</button>
                 </div>
+
+                <!-- Crypto List -->
+                <div class="crypto-section">
+                    <div id="cryptoContent">
+                        <div class="crypto-item">
+                            <div class="crypto-left">
+                                <div class="crypto-icon crypto-btc">₿</div>
+                                <div class="crypto-info">
+                                    <h4>BTC</h4>
+                                    <p>Bitcoin</p>
+                                </div>
+                            </div>
+                            <div class="crypto-right">
+                                <div class="crypto-price">$81,308.02</div>
+                                <div class="crypto-change positive">+1.23%</div>
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <div class="crypto-left">
+                                <div class="crypto-icon crypto-trx">🔴</div>
+                                <div class="crypto-info">
+                                    <h4>TRX</h4>
+                                    <p>Tron</p>
+                                </div>
+                            </div>
+                            <div class="crypto-right">
+                                <div class="crypto-price">$0.34</div>
+                                <div class="crypto-change positive">+0.90%</div>
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <div class="crypto-left">
+                                <div class="crypto-icon crypto-btc">💰</div>
+                                <div class="crypto-info">
+                                    <h4>ETH</h4>
+                                    <p>Ethereum</p>
+                                </div>
+                            </div>
+                            <div class="crypto-right">
+                                <div class="crypto-price">$3,240.50</div>
+                                <div class="crypto-change positive">+2.15%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="watchlistContent" style="display: none;">
+                        <div style="text-align: center; padding: 40px; color: #999;">
+                            <div style="font-size: 32px; margin-bottom: 12px;">📋</div>
+                            <p>Your watchlist is empty</p>
+                            <p style="font-size: 12px; margin-top: 8px;">Add cryptocurrencies to track</p>
+                        </div>
+                    </div>
+
+                    <div id="tasksContent" style="display: none;">
+                        <div style="text-align: center; padding: 40px; color: #999;">
+                            <div style="font-size: 32px; margin-bottom: 12px;">📝</div>
+                            <p>Active Tasks</p>
+                            <p style="font-size: 14px; font-weight: 600; color: #667eea; margin-top: 12px;" id="activeTasks">0 Tasks Running</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Info Section -->
+                <div style="background: white; border-radius: 12px; padding: 24px; margin-top: 32px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);">
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #222;">Account Information</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 14px;">
+                        <div>
+                            <div style="color: #999; margin-bottom: 4px;">Name</div>
+                            <div style="font-weight: 600; color: #222;" id="dashName">-</div>
+                        </div>
+                        <div>
+                            <div style="color: #999; margin-bottom: 4px;">Member ID</div>
+                            <div style="font-weight: 600; color: #222;" id="dashId">-</div>
+                        </div>
+                        <div>
+                            <div style="color: #999; margin-bottom: 4px;">Email</div>
+                            <div style="font-weight: 600; color: #222; word-break: break-all;" id="dashEmail">-</div>
+                        </div>
+                        <div>
+                            <div style="color: #999; margin-bottom: 4px;">Joined</div>
+                            <div style="font-weight: 600; color: #222;" id="dashDate">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="switchTab('crypto')">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-label">Home</div>
+            </div>
+            <div class="nav-item" onclick="switchTab('watchlist')">
+                <div class="nav-icon">📈</div>
+                <div class="nav-label">Trending</div>
+            </div>
+            <div class="nav-item" onclick="showDepositModal()">
+                <div class="nav-icon">🔄</div>
+                <div class="nav-label">Trade</div>
+            </div>
+            <div class="nav-item" onclick="switchTab('tasks')">
+                <div class="nav-icon">🎁</div>
+                <div class="nav-label">Rewards</div>
+            </div>
+            <div class="nav-item" onclick="showOptions()">
+                <div class="nav-icon">⚙️</div>
+                <div class="nav-label">More</div>
             </div>
         </div>
     </div>
@@ -1209,27 +1501,27 @@
             <button class="modal-close" onclick="closeModal('depositModal')">×</button>
             <h2 class="modal-title">Deposit Funds</h2>
             
-            <div style="margin-bottom: 24px;">
+            <div class="form-group">
                 <label class="form-label">Select Investment Plan</label>
-                <div class="deposit-form">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
                     <div class="payment-option" onclick="selectAmount(50)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$50</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$50</div>
                     </div>
                     <div class="payment-option" onclick="selectAmount(500)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$500</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$500</div>
                     </div>
                     <div class="payment-option" onclick="selectAmount(1000)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$1000</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$1000</div>
                     </div>
                     <div class="payment-option" onclick="selectAmount(4000)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$4000</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$4000</div>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Select Payment Method</label>
-                <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
                     <div class="payment-option" onclick="selectPayment('usdt')">
                         <div class="payment-icon">💵</div>
                         <div class="payment-name">USDT</div>
@@ -1266,13 +1558,13 @@
     <!-- Withdraw Modal -->
     <div id="withdrawModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('withdrawModal')">��</button>
+            <button class="modal-close" onclick="closeModal('withdrawModal')">×</button>
             <h2 class="modal-title">Withdraw Funds</h2>
             <div class="form-group">
-                <label class="form-label">Withdraw Amount</label>
-                <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
-                    <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Available Balance</div>
-                    <div style="font-size: 32px; font-weight: 700; color: #667eea;" id="withdrawBalance">$0.00</div>
+                <label class="form-label">Available Balance</label>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 24px; border-radius: 12px; text-align: center; margin-bottom: 20px;">
+                    <div style="font-size: 14px; opacity: 0.85; margin-bottom: 8px;">Available to Withdraw</div>
+                    <div style="font-size: 36px; font-weight: 700;" id="withdrawBalance">$0.00</div>
                 </div>
             </div>
             <div class="form-group">
@@ -1303,7 +1595,6 @@
                 try {
                     currentUser = JSON.parse(savedUser);
                     showDashboard();
-                    initTradingViewWidgets();
                 } catch (e) {
                     console.error('Error loading user:', e);
                     localStorage.removeItem('dthUserSession');
@@ -1326,7 +1617,7 @@
 
         function showWithdrawModal() {
             if (!currentUser || currentUser.balance <= 0) {
-                showNotification('No Funds Available', 'You don\'t have any balance or active work available for withdrawal. Please contact support at https://t.me/customer_assist01', 'error');
+                showNotification('No Funds Available', 'You don\'t have any balance or active work available for withdrawal. Contact support at https://t.me/customer_assist01', 'error');
                 return;
             }
             document.getElementById('withdrawBalance').textContent = '$' + currentUser.balance.toFixed(2);
@@ -1345,7 +1636,7 @@
             const confirmPassword = document.getElementById('confirmPassword').value;
 
             if (password !== confirmPassword) {
-                alert('Passwords do not match!');
+                showNotification('Error', 'Passwords do not match!', 'error');
                 return;
             }
 
@@ -1364,9 +1655,8 @@
             currentUser = userData;
             closeModal('registerModal');
             showDashboard();
-            initTradingViewWidgets();
             document.getElementById('registerForm').reset();
-            showNotification('Welcome!', `Welcome ${fullName}! Your account has been created successfully.`, 'success');
+            showNotification('Success', `Welcome ${fullName}! Your account has been created successfully.`, 'success');
         }
 
         function handleLogin(e) {
@@ -1380,11 +1670,10 @@
                 currentUser = savedUser;
                 closeModal('loginModal');
                 showDashboard();
-                initTradingViewWidgets();
                 document.getElementById('loginForm').reset();
-                showNotification('Login Successful', `Welcome back, ${currentUser.name}!`, 'success');
+                showNotification('Success', `Welcome back, ${currentUser.name}!`, 'success');
             } else {
-                showNotification('Login Failed', 'Invalid email or password!', 'error');
+                showNotification('Error', 'Invalid email or password!', 'error');
             }
         }
 
@@ -1410,15 +1699,14 @@
             
             if (!currentUser) return;
 
+            document.getElementById('welcomeTitle').textContent = `Welcome back, ${currentUser.name}!`;
             document.getElementById('dashName').textContent = currentUser.name;
             document.getElementById('dashEmail').textContent = currentUser.email;
             document.getElementById('dashDate').textContent = currentUser.date;
             document.getElementById('dashId').textContent = currentUser.id;
-            document.getElementById('navUserName').textContent = `Welcome, ${currentUser.name}!`;
+            document.getElementById('navUserName').textContent = `${currentUser.name}`;
             document.getElementById('balanceAmount').textContent = '$' + (currentUser.balance || 0).toFixed(2);
-            document.getElementById('totalInvested').textContent = '$' + (currentUser.balance || 0).toFixed(2);
-            document.getElementById('totalWithdrawn').textContent = '$' + (currentUser.withdrawn || 0).toFixed(2);
-            document.getElementById('activeTasks').textContent = currentUser.balance > 0 ? Math.floor(currentUser.balance / 100) : 0;
+            document.getElementById('activeTasks').textContent = (currentUser.balance > 0 ? Math.floor(currentUser.balance / 100) : 0) + ' Tasks Running';
         }
 
         function logout() {
@@ -1427,12 +1715,12 @@
             hideDashboard();
             document.getElementById('registerForm').reset();
             document.getElementById('loginForm').reset();
-            showNotification('Logged Out', 'You have been successfully logged out.', 'success');
+            showNotification('Success', 'You have been successfully logged out.', 'success');
         }
 
         function selectAmount(amount) {
             selectedAmount = amount;
-            document.querySelectorAll('#depositModal .deposit-form .payment-option').forEach(el => {
+            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
                 el.classList.remove('selected');
             });
             event.target.closest('.payment-option').classList.add('selected');
@@ -1441,7 +1729,7 @@
 
         function selectPayment(method) {
             selectedPayment = method;
-            document.querySelectorAll('#depositModal .form-group .payment-option').forEach(el => {
+            document.querySelectorAll('#depositModal .form-group:nth-of-type(2) .payment-option').forEach(el => {
                 el.classList.remove('selected');
             });
             event.target.closest('.payment-option').classList.add('selected');
@@ -1526,7 +1814,7 @@
 
             const btn = event.target;
             btn.disabled = true;
-            btn.innerHTML = '<span class="loading-btn"><span class="spinner"></span> Processing...</span>';
+            btn.innerHTML = '<span class="spinner"></span> Processing...';
 
             setTimeout(() => {
                 currentUser.balance -= amount;
@@ -1573,6 +1861,35 @@
             }
         }
 
+        function switchTab(tab) {
+            document.querySelectorAll('#dashboardPage .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('#dashboardPage .nav-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            event.currentTarget?.closest('.nav-item')?.classList.add('active');
+
+            if (tab === 'crypto') {
+                document.getElementById('cryptoContent').style.display = 'block';
+                document.getElementById('watchlistContent').style.display = 'none';
+                document.getElementById('tasksContent').style.display = 'none';
+            } else if (tab === 'watchlist') {
+                document.getElementById('cryptoContent').style.display = 'none';
+                document.getElementById('watchlistContent').style.display = 'block';
+                document.getElementById('tasksContent').style.display = 'none';
+            } else if (tab === 'tasks') {
+                document.getElementById('cryptoContent').style.display = 'none';
+                document.getElementById('watchlistContent').style.display = 'none';
+                document.getElementById('tasksContent').style.display = 'block';
+            }
+        }
+
+        function showActionButton(action) {
+            showNotification('Coming Soon', `${action.charAt(0).toUpperCase() + action.slice(1)} feature coming soon!`, 'success');
+        }
+
+        function showOptions() {
+            showNotification('Settings', 'Settings menu coming soon!', 'success');
+        }
+
         function showNotification(title, message, type = 'success') {
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
@@ -1588,51 +1905,6 @@
                     notification.remove();
                 }, 400);
             }, 5000);
-        }
-
-        function initTradingViewWidgets() {
-            // Clear existing widgets
-            const container1 = document.getElementById('tradingview-widget');
-            const container2 = document.getElementById('tradingview-widget-2');
-            if (container1) container1.innerHTML = '';
-            if (container2) container2.innerHTML = '';
-
-            // Create mini chart widget
-            if (container1) {
-                const script1 = document.createElement('script');
-                script1.type = 'text/javascript';
-                script1.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
-                script1.async = true;
-                script1.innerHTML = JSON.stringify({
-                    "symbol": "BINANCE:BTCUSDT",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "12M",
-                    "colorTheme": "light",
-                    "thinVolume": false,
-                    "isTransparent": false,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                });
-                container1.appendChild(script1);
-            }
-
-            // Create crypto widget
-            if (container2) {
-                const script2 = document.createElement('script');
-                script2.type = 'text/javascript';
-                script2.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
-                script2.async = true;
-                script2.innerHTML = JSON.stringify({
-                    "symbol": "BINANCE:BTCUSDT",
-                    "width": "100%",
-                    "locale": "en",
-                    "colorTheme": "light",
-                    "isTransparent": false
-                });
-                container2.appendChild(script2);
-            }
         }
     </script>
 </body>
