@@ -1,387 +1,1310 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Pattinson Private Banking</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink: '#0B0F19',
-          card: '#0F1422',
-          gold: '#D4AF37',
-          mint: '#22C55E',
-          danger: '#EF4444',
-        },
-        fontFamily: { sans: ['-apple-system','BlinkMacSystemFont','Segoe UI','Inter','system-ui','sans-serif'] },
-        boxShadow: { glow: '0 20px 60px -20px rgba(34,197,94,.45)' }
-      }
-    }
-  }
-</script>
-<style>
-  html,body{background:#F5F6FA}
-  .tile{transition:transform .15s ease, box-shadow .2s ease}
-  .tile:active{transform:scale(.94)}
-  .btn{transition:transform .12s ease, box-shadow .2s ease, background-color .2s ease}
-  .btn:active{transform:scale(.97)}
-  .btn-ripple{position:relative;overflow:hidden}
-  .btn-ripple::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.35),transparent 40%);opacity:0;transition:opacity .5s}
-  .btn-ripple:active::after{opacity:1;transition:opacity 0s}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%{box-shadow:0 0 0 22px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
-  .animate-fade{animation:fadeIn .35s ease both}
-  .animate-pop{animation:scaleIn .25s ease both}
-  .spin{animation:spin 1s linear infinite}
-  .pulse-ring{animation:pulseRing 1.6s infinite}
-  .modal-backdrop{background:rgba(8,11,20,.6);backdrop-filter:blur(8px)}
-  .hidden-x{display:none}
-  .face-frame{border:3px dashed rgba(34,197,94,.6);border-radius:50%}
-  .scan-line{position:absolute;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,#22C55E,transparent);animation:scan 2s ease-in-out infinite}
-  @keyframes scan{0%,100%{top:15%}50%{top:80%}}
-  .copy-btn:active{transform:scale(.92)}
-  input:focus,select:focus{outline:none;box-shadow:0 0 0 3px rgba(34,197,94,.25);border-color:#22C55E}
-  .close-btn{position:absolute;top:4;right:4;width:32px;height:32px;display:flex;align-items:center;justify-center;border-radius:8px;background:rgba(0,0,0,.05);cursor:pointer;transition:background .2s}
-  .close-btn:hover{background:rgba(0,0,0,.1)}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPRESS PREMIUM GRANTS - DTH Daily Task Highlights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0.9;
+        }
+
+        .navbar-link:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .btn-login {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            animation: slideDown 0.8s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+            animation: slideDown 0.8s ease 0.4s both;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideDown 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 24px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #222;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 48px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e8e8e8;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #222;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: #222;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .about-image {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image-icon {
+            font-size: 120px;
+            margin-bottom: 24px;
+        }
+
+        .about-image p {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Plans Section */
+        .plans {
+            padding: 60px 24px;
+            background: white;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .plan-card {
+            background: white;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .plan-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .plan-card.popular {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .plan-card.popular::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .plan-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #222;
+        }
+
+        .plan-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 24px;
+        }
+
+        .plan-price span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .plan-features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .btn-plan {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 24px;
+        }
+
+        .btn-plan:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.4s ease;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #f0f0f0;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: #e0e0e0;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #222;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .form-checkbox input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .form-checkbox label {
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding: 40px 24px;
+        }
+
+        .dashboard.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .user-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .user-card h3 {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .user-card p {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 16px;
+        }
+
+        .user-info {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.8;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .balance-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .balance-amount {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .deposit-btn {
+            background: white;
+            color: #667eea;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .deposit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .deposit-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .payment-option {
+            background: #f8f9fa;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover,
+        .payment-option.selected {
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .payment-option.selected {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .payment-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .payment-name {
+            font-weight: 600;
+            color: #222;
+            font-size: 14px;
+        }
+
+        .address-box {
+            background: #f8f9fa;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            display: none;
+        }
+
+        .address-box.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        .address-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .address-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .address-text {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            flex: 1;
+            word-break: break-all;
+            color: #333;
+        }
+
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #764ba2;
+        }
+
+        .copy-btn.copied {
+            background: #4CAF50;
+        }
+
+        .info-text {
+            font-size: 13px;
+            color: #666;
+            margin: 16px 0;
+            padding: 12px;
+            background: #f0f0f0;
+            border-left: 3px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .paid-btn {
+            width: 100%;
+            background: #4CAF50;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: all 0.3s;
+        }
+
+        .paid-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .paid-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        .footer {
+            background: #222;
+            color: #999;
+            text-align: center;
+            padding: 32px 24px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+            }
+
+            .user-card, .balance-card {
+                min-width: 100%;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar-links {
+                gap: 16px;
+            }
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+    </style>
 </head>
-<body class="font-sans text-slate-900">
-
-<div class="mx-auto max-w-md px-5 pt-6 pb-16">
-
-  <!-- Welcome Screen -->
-  <div id="screen-welcome" class="animate-fade">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold mt-16">Welcome Back</h1>
-      <p class="text-slate-500 mt-2">~W Kieran J Pattinson</p>
-    </div>
-    <button onclick="goHoldings()" class="btn btn-ripple mt-12 w-full rounded-xl bg-mint text-white py-4 text-lg font-semibold">View Holdings</button>
-  </div>
-
-  <!-- Holdings Screen -->
-  <div id="screen-holdings" class="hidden-x">
-    <header class="flex items-center justify-between animate-fade">
-      <div class="flex items-center gap-3">
-        <img id="avatar" src="9bf0e458-ed26-4956-9b28-0e7118e7fec3.jpeg" alt="Profile avatar"
-             class="h-12 w-12 rounded-full object-cover ring-2 ring-mint/60" />
-        <div class="leading-tight">
-          <p class="text-[11px] uppercase tracking-wider text-slate-500">Account holder</p>
-          <p class="text-base font-semibold">~W Kieran J Pattinson</p>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-brand">💼 EXPRESS PREMIUM GRANTS</div>
+        <div class="navbar-links">
+            <a class="navbar-link" onclick="scrollTo('features')">Features</a>
+            <a class="navbar-link" onclick="scrollTo('about')">About</a>
+            <a class="navbar-link" onclick="scrollTo('plans')">Plans</a>
+            <button class="btn-login" onclick="showLoginModal()">Login</button>
         </div>
-      </div>
-      <div class="flex items-center gap-2">
-        <button class="btn h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center" aria-label="Search">🔍</button>
-        <button class="btn h-10 w-10 rounded-full bg-white shadow-sm flex items-center justify-center relative" aria-label="Notifications">
-          🔔<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-danger"></span>
-        </button>
-      </div>
-    </header>
+    </nav>
 
-    <!-- Recovery banner -->
-    <div class="mt-5 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 animate-fade">
-      <span class="text-amber-500 text-xl leading-none">🛡️</span>
-      <div>
-        <p class="text-sm font-semibold text-amber-900">Account Recovery Active</p>
-        <p class="text-xs text-amber-800/80">Verification required for full access.</p>
-      </div>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>DTH Daily Task Highlights</h1>
+                <p>Fully Automated Affiliate Marketing Platform - Risk-Free & Safe Passive Income</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showRegisterModal()">Get Started</button>
+                    <button class="btn btn-secondary" onclick="scrollTo('about')">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose DTH?</h2>
+                <p class="section-subtitle">Fully Automated. Completely Safe. Truly Profitable.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>100% Automated</h3>
+                        <p>The system runs automatically. Just listen, follow the process, and let technology work for you.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Risk-Free & Safe</h3>
+                        <p>Your investment is protected. No hidden fees. Transparent and secure transactions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Quick Returns</h3>
+                        <p>See good profits from day one. Starting balance minimum $100. Withdraw anytime.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Flexible Withdrawals</h3>
+                        <p>Withdraw whenever you want. Create new tasks. Control your own timeline.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Track Everything</h3>
+                        <p>Real-time dashboard. Monitor your earnings, tasks, and withdrawals instantly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Global Support</h3>
+                        <p>24/7 support available. Multiple payment methods. Instant assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About DTH Daily Task Highlights</h2>
+                        <p>DTH is a revolutionary automated affiliate marketing platform that combines cryptocurrency and modern technology to create a seamless passive income experience.</p>
+                        <p>Similar to crypto investment opportunities, but with built-in safeguards and transparency, DTH operates a fully automated system. You don't need technical skills or constant monitoring.</p>
+                        <ul class="benefits-list">
+                            <li>Minimum deposit just $100</li>
+                            <li>Immediate profit generation</li>
+                            <li>No technical knowledge required</li>
+                            <li>Withdraw profits anytime</li>
+                            <li>Create new tasks instantly</li>
+                            <li>Completely transparent operations</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <div class="about-image-icon">🚀</div>
+                        <p>Start Your Passive Income Journey Today</p>
+                        <p style="font-size: 48px; margin-top: 24px; color: #667eea;">DTH</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans Section -->
+        <section class="plans" id="plans">
+            <div class="container">
+                <h2 class="section-title">Investment Plans</h2>
+                <p class="section-subtitle">Choose the plan that fits your investment goals</p>
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <div class="plan-name">Starter</div>
+                        <div class="plan-price">$50<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li>$50 Initial Investment</li>
+                            <li>Automated Daily Tasks</li>
+                            <li>Real-time Dashboard</li>
+                            <li>Email Support</li>
+                        </ul>
+                        <button class="btn-plan" onclick="selectPlan(50)">Get Started</button>
+                    </div>
+
+                    <div class="plan-card popular">
+                        <div class="plan-name">Professional</div>
+                        <div class="plan-price">$500<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li>$500 Initial Investment</li>
+                            <li>Premium Daily Tasks</li>
+                            <li>Advanced Analytics</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <button class="btn-plan" onclick="selectPlan(500)">Get Started</button>
+                    </div>
+
+                    <div class="plan-card">
+                        <div class="plan-name">Business</div>
+                        <div class="plan-price">$1000<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li>$1000 Initial Investment</li>
+                            <li>Premium+ Tasks</li>
+                            <li>Custom Analytics</li>
+                            <li>24/7 VIP Support</li>
+                        </ul>
+                        <button class="btn-plan" onclick="selectPlan(1000)">Get Started</button>
+                    </div>
+
+                    <div class="plan-card">
+                        <div class="plan-name">Enterprise</div>
+                        <div class="plan-price">$4000<span>/month</span></div>
+                        <ul class="plan-features">
+                            <li>$4000 Initial Investment</li>
+                            <li>Maximum Tasks</li>
+                            <li>Dedicated Account Manager</li>
+                            <li>Concierge Support</li>
+                        </ul>
+                        <button class="btn-plan" onclick="selectPlan(4000)">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 EXPRESS PREMIUM GRANTS - DTH Daily Task Highlights. All rights reserved.</p>
+                <p style="margin-top: 16px; font-size: 12px;">For support: <a href="https://t.me/customer_assist01" target="_blank">Contact Support</a></p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Balance card -->
-    <section class="mt-5 rounded-3xl bg-ink text-white p-6 shadow-glow animate-pop">
-      <div class="flex items-center justify-between">
-        <p class="text-[11px] tracking-[0.2em] text-white/50">AVAILABLE BALANCE</p>
-        <span class="rounded-full border border-mint/40 px-3 py-1 text-xs font-medium text-mint">USD</span>
-      </div>
-      <div class="mt-4 flex items-end gap-1">
-        <span class="text-5xl font-bold tracking-tight">$200,000</span>
-        <span class="pb-2 text-2xl font-bold text-white/30">.00</span>
-      </div>
-      <p class="mt-1 text-xs text-white/50">Recoverable funds · pending verification</p>
+    <!-- Dashboard Page -->
+    <div id="dashboardPage">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-brand">💼 EXPRESS PREMIUM GRANTS</div>
+            <div class="navbar-links">
+                <button class="btn-login" onclick="logout()">Logout</button>
+            </div>
+        </nav>
 
-      <div class="mt-5 grid grid-cols-4 gap-2">
-        <button onclick="openWithdraw()" class="btn btn-ripple flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-mint py-4 text-white">
-          <span class="text-lg">⬆️</span><span class="text-xs font-semibold">Withdraw</span>
-        </button>
-        <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
-          <span class="text-lg">📤</span><span class="text-xs font-semibold">Send</span>
-        </button>
-        <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
-          <span class="text-lg">⬇️</span><span class="text-xs font-semibold">Top Up</span>
-        </button>
-        <button class="btn flex flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/10 py-4">
-          <span class="text-lg">🔁</span><span class="text-xs font-semibold">Exchange</span>
-        </button>
-      </div>
-    </section>
+        <div class="dashboard show">
+            <div class="container">
+                <h2 style="margin-bottom: 32px; color: #222;">Welcome to Your Dashboard</h2>
 
-    <!-- Method cards -->
-    <div class="mt-5 grid grid-cols-2 gap-3 animate-fade">
-      <div class="rounded-2xl border border-slate-200 bg-white p-4">
-        <div class="text-2xl">🏦</div>
-        <p class="mt-6 text-xs text-slate-500">Bank Transfer</p>
-        <p class="text-sm font-semibold">SWIFT · Wire</p>
-      </div>
-      <div class="rounded-2xl border border-slate-200 bg-white p-4">
-        <div class="text-2xl">₿</div>
-        <p class="mt-6 text-xs text-slate-500">Crypto</p>
-        <p class="text-sm font-semibold">BTC Network</p>
-      </div>
-    </div>
+                <div class="dashboard-header">
+                    <div class="user-card">
+                        <h3>Registration Information</h3>
+                        <div class="user-info">
+                            <p><strong>Name:</strong> <span id="dashName">Loading...</span></p>
+                            <p><strong>Email:</strong> <span id="dashEmail">Loading...</span></p>
+                            <p><strong>Registration:</strong> <span id="dashDate">Loading...</span></p>
+                            <p><strong>Member ID:</strong> <span id="dashId">Loading...</span></p>
+                        </div>
+                    </div>
 
-    <!-- Recent activity -->
-    <div class="mt-6 flex items-center justify-between">
-      <h2 class="text-lg font-bold">Recent Activity</h2>
-      <button class="text-sm font-medium text-mint">See all</button>
-    </div>
-    <div class="mt-3 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">🕒</div>
-      <p class="text-sm text-slate-500">No transactions yet</p>
-    </div>
-  </div>
+                    <div class="balance-card">
+                        <div class="balance-label">Current Balance</div>
+                        <div class="balance-amount" id="balanceAmount">$0.00</div>
+                        <button class="deposit-btn" onclick="showDepositModal()">💳 Make a Deposit</button>
+                    </div>
+                </div>
 
-</div>
-
-<!-- ================== MODALS ================== -->
-
-<!-- Method choice -->
-<div id="m-method" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4">
-  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop relative">
-    <button onclick="closeAll()" class="close-btn">✕</button>
-    <h3 class="text-lg font-bold">Choose withdrawal method</h3>
-    <p class="text-sm text-slate-500 mt-1">Select how you'd like to receive your funds.</p>
-    <div class="mt-5 grid gap-3">
-      <button onclick="chooseMethod('bank')" class="btn btn-ripple flex items-center gap-4 rounded-2xl border border-slate-200 p-4 hover:border-mint">
-        <div class="h-12 w-12 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xl">🏦</div>
-        <div class="text-left">
-          <p class="font-semibold">Bank Transfer</p>
-          <p class="text-xs text-slate-500">SWIFT · 1–3 business days</p>
+                <div style="margin-top: 40px; background: white; padding: 32px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                    <h3 style="margin-bottom: 24px; color: #222; font-size: 20px;">Quick Stats</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+                        <div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Total Invested</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #667eea;" id="totalInvested">$0.00</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Active Tasks</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #667eea;">0</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Total Withdrawn</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #667eea;">$0.00</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">System Status</div>
+                            <div style="font-size: 28px; font-weight: 700; color: #4CAF50;">🟢 Active</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </button>
-      <button onclick="chooseMethod('btc')" class="btn btn-ripple flex items-center gap-4 rounded-2xl border border-slate-200 p-4 hover:border-mint">
-        <div class="h-12 w-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl">₿</div>
-        <div class="text-left">
-          <p class="font-semibold">Bitcoin (BTC)</p>
-          <p class="text-xs text-slate-500">On-chain · ~30 min</p>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('registerModal')">×</button>
+            <h2 class="modal-title">Create Account</h2>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password *</label>
+                    <input type="password" class="form-input" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password *</label>
+                    <input type="password" class="form-input" id="confirmPassword" required>
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="termsCheck" required>
+                    <label for="termsCheck">I agree to the Terms & Conditions</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Create Account</button>
+            </form>
         </div>
-      </button>
     </div>
-  </div>
-</div>
 
-<!-- Bank info -->
-<div id="m-bank" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4">
-  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop relative">
-    <button onclick="closeAll()" class="close-btn">✕</button>
-    <h3 class="text-lg font-bold">Bank account details</h3>
-    <p class="text-sm text-slate-500 mt-1">Enter your receiving bank info.</p>
-    <form onsubmit="event.preventDefault();submitBankForm()" class="mt-4 space-y-3">
-      <div>
-        <label class="text-xs font-medium text-slate-600">Account holder name</label>
-        <input id="bank-name" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="Full name" />
-      </div>
-      <div>
-        <label class="text-xs font-medium text-slate-600">Bank name</label>
-        <input id="bank-bank" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="e.g. Barclays" />
-      </div>
-      <div class="grid grid-cols-2 gap-3">
-        <div>
-          <label class="text-xs font-medium text-slate-600">Account number</label>
-          <input id="bank-account" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="00000000" />
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">×</button>
+            <h2 class="modal-title">Login</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input type="email" class="form-input" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password *</label>
+                    <input type="password" class="form-input" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Login</button>
+            </form>
         </div>
-        <div>
-          <label class="text-xs font-medium text-slate-600">Sort / Routing</label>
-          <input id="bank-routing" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="00-00-00" />
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('depositModal')">×</button>
+            <h2 class="modal-title">Make a Deposit</h2>
+            
+            <div style="margin-bottom: 24px;">
+                <label class="form-label">Select Investment Plan</label>
+                <div class="deposit-form">
+                    <div class="payment-option" onclick="selectAmount(50)">
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$50</div>
+                        <div style="font-size: 12px; color: #666;">Starter</div>
+                    </div>
+                    <div class="payment-option" onclick="selectAmount(500)">
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$500</div>
+                        <div style="font-size: 12px; color: #666;">Professional</div>
+                    </div>
+                    <div class="payment-option" onclick="selectAmount(1000)">
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$1000</div>
+                        <div style="font-size: 12px; color: #666;">Business</div>
+                    </div>
+                    <div class="payment-option" onclick="selectAmount(4000)">
+                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$4000</div>
+                        <div style="font-size: 12px; color: #666;">Enterprise</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Select Payment Method</label>
+                <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                    <div class="payment-option" onclick="selectPayment('usdt')">
+                        <div class="payment-icon">💵</div>
+                        <div class="payment-name">USDT</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('btc')">
+                        <div class="payment-icon">₿</div>
+                        <div class="payment-name">Bitcoin</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="usdtAddress" class="address-box">
+                <div class="address-label">💳 USDT Address (TRC20)</div>
+                <div class="address-content">
+                    <div class="address-text">TEUh5LumZf8UDhGhZNbSmSKwQ6945cvx7o</div>
+                    <button type="button" class="copy-btn" onclick="copyAddress('TEUh5LumZf8UDhGhZNbSmSKwQ6945cvx7o')">Copy</button>
+                </div>
+                <div class="info-text">💡 Send exactly the amount for your chosen plan. Payment will be verified automatically.</div>
+            </div>
+
+            <div id="btcAddress" class="address-box">
+                <div class="address-label">₿ Bitcoin Address</div>
+                <div class="address-content">
+                    <div class="address-text">bc1q55cdvhaxvnzvvsnrwplszg0z7q8k4hkztxe5n5</div>
+                    <button type="button" class="copy-btn" onclick="copyAddress('bc1q55cdvhaxvnzvvsnrwplszg0z7q8k4hkztxe5n5')">Copy</button>
+                </div>
+                <div class="info-text">💡 Send exactly the amount for your chosen plan. Payment will be verified automatically.</div>
+            </div>
+
+            <div class="success-message" id="successMsg"></div>
+
+            <button class="paid-btn" onclick="handlePaymentConfirm()" id="paidBtn" disabled>I Have Paid - Proceed</button>
         </div>
-      </div>
-      <div>
-        <label class="text-xs font-medium text-slate-600">SWIFT / BIC</label>
-        <input id="bank-swift" class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm" placeholder="Optional" />
-      </div>
-      <div class="flex gap-2 pt-2">
-        <button type="button" onclick="closeAll()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Back</button>
-        <button class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold">Continue</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- BTC info -->
-<div id="m-btc" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4">
-  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop relative">
-    <button onclick="closeAll()" class="close-btn">✕</button>
-    <h3 class="text-lg font-bold">Bitcoin wallet address</h3>
-    <p class="text-sm text-slate-500 mt-1">Enter the BTC address that will receive your funds.</p>
-    <form onsubmit="event.preventDefault();submitBtcForm()" class="mt-4 space-y-3">
-      <div>
-        <label class="text-xs font-medium text-slate-600">BTC Address</label>
-        <input id="btc-address" required class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm font-mono" placeholder="bc1q…" />
-      </div>
-      <div>
-        <label class="text-xs font-medium text-slate-600">Network</label>
-        <select id="btc-network" class="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white">
-          <option>Bitcoin (BTC)</option>
-          <option>Lightning</option>
-        </select>
-      </div>
-      <div class="flex gap-2 pt-2">
-        <button type="button" onclick="closeAll()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Back</button>
-        <button class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold">Continue</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Confirmation -->
-<div id="m-confirm" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-4 overflow-y-auto">
-  <div class="w-full max-w-md rounded-3xl bg-white p-6 animate-pop my-8 relative">
-    <button onclick="closeAll()" class="close-btn">✕</button>
-    <h3 class="text-lg font-bold">Confirm transaction</h3>
-    <p class="text-sm text-slate-500 mt-1">Review your withdrawal details below.</p>
-
-    <div id="confirm-details" class="mt-4 rounded-2xl bg-slate-50 p-4 text-sm space-y-3">
-      <!-- Dynamically populated -->
     </div>
 
-    <div class="mt-4 rounded-2xl bg-slate-50 p-4 text-sm space-y-2">
-      <div class="flex justify-between"><span class="text-slate-500">Withdrawal</span><span class="font-semibold">$200,000.00</span></div>
-      <div class="flex justify-between border-t border-slate-200 pt-2"><span class="font-semibold">Total</span><span class="font-semibold text-mint">$200,000.00</span></div>
-    </div>
+    <script>
+        let currentUser = null;
+        let selectedAmount = null;
+        let selectedPayment = null;
 
-    <div class="mt-5 flex gap-2">
-      <button onclick="closeAll()" class="btn flex-1 rounded-xl border border-slate-200 py-3 text-sm font-medium">Back</button>
-      <button onclick="processTransaction()" class="btn btn-ripple flex-1 rounded-xl bg-mint text-white py-3 text-sm font-semibold">Confirm</button>
-    </div>
-  </div>
-</div>
+        function showRegisterModal() {
+            document.getElementById('registerModal').classList.add('show');
+        }
 
-<!-- Loading -->
-<div id="m-loading" class="hidden-x fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
-  <div class="w-full max-w-md rounded-3xl bg-white p-8 animate-pop text-center">
-    <div class="mx-auto h-14 w-14 rounded-full border-4 border-mint/20 border-t-mint spin"></div>
-    <p class="mt-5 font-semibold">Processing transaction…</p>
-    <p class="text-sm text-slate-500" id="loading-sub">Verifying account details</p>
-    <div class="mt-5 h-2 w-full rounded-full bg-slate-100 overflow-hidden">
-      <div id="bar" class="h-full bg-mint transition-all duration-100 ease-linear" style="width:0%"></div>
-    </div>
-    <p class="mt-2 text-xs text-slate-400" id="pct">0%</p>
-  </div>
-</div>
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('show');
+        }
 
-<!-- Toast -->
-<div id="toast" class="hidden-x fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] rounded-full bg-slate-900 text-white text-sm px-4 py-2 shadow-lg animate-pop"></div>
+        function showDepositModal() {
+            document.getElementById('depositModal').classList.add('show');
+        }
 
-<script>
-  const $ = (id) => document.getElementById(id);
-  const screens = ['screen-welcome', 'screen-holdings'];
-  const modals = ['m-method', 'm-bank', 'm-btc', 'm-confirm', 'm-loading'];
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
 
-  let receiverData = { type: null };
+        function handleRegister(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
 
-  function show(id) {
-    modals.forEach(m => $(m).classList.add('hidden-x'));
-    if (id) $(id).classList.remove('hidden-x');
-  }
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
 
-  function showScreen(id) {
-    screens.forEach(s => $(s).classList.add('hidden-x'));
-    if (id) $(id).classList.remove('hidden-x');
-  }
+            const userData = {
+                name: fullName,
+                email: email,
+                password: password,
+                id: 'DTH' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+                date: new Date().toLocaleDateString(),
+                balance: 0
+            };
 
-  function closeAll() {
-    show(null);
-  }
+            localStorage.setItem('dthUser', JSON.stringify(userData));
+            currentUser = userData;
+            closeModal('registerModal');
+            showDashboard();
+            document.getElementById('registerForm').reset();
+        }
 
-  function goHoldings() {
-    showScreen('screen-holdings');
-  }
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
 
-  function openWithdraw() {
-    show('m-method');
-  }
+            const userData = JSON.parse(localStorage.getItem('dthUser'));
+            if (userData && userData.email === email && userData.password === password) {
+                currentUser = userData;
+                closeModal('loginModal');
+                showDashboard();
+                document.getElementById('loginForm').reset();
+            } else {
+                alert('Invalid email or password!');
+            }
+        }
 
-  function chooseMethod(type) {
-    receiverData.type = type;
-    show(type === 'bank' ? 'm-bank' : 'm-btc');
-  }
+        function showDashboard() {
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'block';
+            updateDashboard();
+        }
 
-  function submitBankForm() {
-    receiverData.holderName = $('bank-name').value;
-    receiverData.bankName = $('bank-bank').value;
-    receiverData.accountNumber = $('bank-account').value;
-    receiverData.routing = $('bank-routing').value;
-    receiverData.swift = $('bank-swift').value;
-    showConfirmation();
-  }
+        function updateDashboard() {
+            if (!currentUser) {
+                currentUser = JSON.parse(localStorage.getItem('dthUser'));
+            }
+            
+            document.getElementById('dashName').textContent = currentUser.name;
+            document.getElementById('dashEmail').textContent = currentUser.email;
+            document.getElementById('dashDate').textContent = currentUser.date;
+            document.getElementById('dashId').textContent = currentUser.id;
+            document.getElementById('balanceAmount').textContent = '$' + (currentUser.balance || 0).toFixed(2);
+            document.getElementById('totalInvested').textContent = '$' + (currentUser.balance || 0).toFixed(2);
+        }
 
-  function submitBtcForm() {
-    receiverData.address = $('btc-address').value;
-    receiverData.network = $('btc-network').value;
-    showConfirmation();
-  }
+        function logout() {
+            currentUser = null;
+            document.getElementById('dashboardPage').style.display = 'none';
+            document.getElementById('landingPage').style.display = 'block';
+        }
 
-  function showConfirmation() {
-    const details = $('confirm-details');
-    let html = '';
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.target.closest('.payment-option').classList.add('selected');
+            updatePaidButton();
+        }
 
-    if (receiverData.type === 'bank') {
-      html = `
-        <div><span class="text-slate-500">Method</span><span class="font-semibold">Bank Transfer</span></div>
-        <div><span class="text-slate-500">Account Holder</span><span class="font-semibold">${receiverData.holderName}</span></div>
-        <div><span class="text-slate-500">Bank</span><span class="font-semibold">${receiverData.bankName}</span></div>
-        <div><span class="text-slate-500">Account #</span><span class="font-mono text-xs">${receiverData.accountNumber}</span></div>
-        <div><span class="text-slate-500">Routing</span><span class="font-mono text-xs">${receiverData.routing}</span></div>
-        ${receiverData.swift ? `<div><span class="text-slate-500">SWIFT</span><span class="font-mono text-xs">${receiverData.swift}</span></div>` : ''}
-      `;
-    } else {
-      html = `
-        <div><span class="text-slate-500">Method</span><span class="font-semibold">Bitcoin (BTC)</span></div>
-        <div><span class="text-slate-500">Network</span><span class="font-semibold">${receiverData.network}</span></div>
-        <div class="break-all"><span class="text-slate-500">Address</span><span class="font-mono text-xs">${receiverData.address}</span></div>
-      `;
-    }
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.target.closest('.payment-option').classList.add('selected');
+            
+            document.getElementById('usdtAddress').classList.remove('show');
+            document.getElementById('btcAddress').classList.remove('show');
+            
+            if (method === 'usdt') {
+                document.getElementById('usdtAddress').classList.add('show');
+            } else if (method === 'btc') {
+                document.getElementById('btcAddress').classList.add('show');
+            }
+            updatePaidButton();
+        }
 
-    details.innerHTML = html;
-    show('m-confirm');
-  }
+        function updatePaidButton() {
+            const paidBtn = document.getElementById('paidBtn');
+            if (selectedAmount && selectedPayment) {
+                paidBtn.disabled = false;
+            }
+        }
 
-  function processTransaction() {
-    show('m-loading');
-    const bar = $('bar'), pct = $('pct'), sub = $('loading-sub');
-    const subs = ['Verifying account details', 'Processing payment', 'Validating transaction', 'Finalizing transfer'];
-    let elapsed = 0, total = 8000, step = 100;
-    
-    const t = setInterval(() => {
-      elapsed += step;
-      const p = Math.min(100, (elapsed / total) * 100);
-      bar.style.width = p + '%';
-      pct.textContent = Math.round(p) + '%';
-      sub.textContent = subs[Math.min(subs.length - 1, Math.floor(p / 25))];
-      
-      if (elapsed >= total) {
-        clearInterval(t);
-        completeTransaction();
-      }
-    }, step);
-  }
+        function copyAddress(address) {
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
 
-  function completeTransaction() {
-    receiverData = { type: null };
-    showScreen('screen-holdings');
-    closeAll();
-  }
+        function handlePaymentConfirm() {
+            if (!selectedAmount || !selectedPayment) {
+                alert('Please select amount and payment method');
+                return;
+            }
 
-  document.addEventListener('pointerdown', (e) => {
-    const b = e.target.closest('.btn-ripple');
-    if (!b) return;
-    const r = b.getBoundingClientRect();
-    b.style.setProperty('--x', (e.clientX - r.left) + 'px');
-    b.style.setProperty('--y', (e.clientY - r.top) + 'px');
-  });
-</script>
+            const successMsg = document.getElementById('successMsg');
+            successMsg.textContent = `✓ Payment confirmed! Opening Telegram support...`;
+            successMsg.classList.add('show');
+
+            // Update user balance
+            currentUser.balance += selectedAmount;
+            localStorage.setItem('dthUser', JSON.stringify(currentUser));
+
+            setTimeout(() => {
+                window.open('https://t.me/customer_assist01', '_blank');
+                closeModal('depositModal');
+                updateDashboard();
+                selectedAmount = null;
+                selectedPayment = null;
+                successMsg.classList.remove('show');
+                document.querySelectorAll('#depositModal .payment-option').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                document.getElementById('usdtAddress').classList.remove('show');
+                document.getElementById('btcAddress').classList.remove('show');
+            }, 2000);
+        }
+
+        function selectPlan(amount) {
+            if (!currentUser) {
+                showRegisterModal();
+            } else {
+                selectedAmount = amount;
+                showDepositModal();
+            }
+        }
+
+        function scrollTo(section) {
+            const element = document.getElementById(section);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Check if user is logged in
+        window.addEventListener('load', () => {
+            const savedUser = localStorage.getItem('dthUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showDashboard();
+            }
+        });
+    </script>
 </body>
 </html>
