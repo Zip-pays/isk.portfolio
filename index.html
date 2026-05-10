@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXPRESS PREMIUM GRANTS - DTH Daily Task Highlights</title>
+    <script src="https://s3.tradingview.com/tv.js"></script>
     <style>
         * {
             margin: 0;
@@ -75,9 +76,20 @@
             color: #667eea;
         }
 
+        .user-nav-info {
+            display: none;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -412,6 +424,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6);
             animation: fadeIn 0.3s ease;
+            overflow-y: auto;
         }
 
         .modal.show {
@@ -430,6 +443,7 @@
             overflow-y: auto;
             animation: slideUp 0.4s ease;
             position: relative;
+            margin: auto;
         }
 
         .modal-close {
@@ -511,6 +525,7 @@
         .dashboard {
             display: none;
             padding: 40px 24px;
+            min-height: calc(100vh - 80px);
         }
 
         .dashboard.show {
@@ -519,88 +534,143 @@
         }
 
         .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 24px;
-            flex-wrap: wrap;
+            margin-bottom: 32px;
         }
 
-        .user-card {
+        .stat-card {
             background: white;
             border-radius: 12px;
             padding: 24px;
-            flex: 1;
-            min-width: 300px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
         }
 
-        .user-card h3 {
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card h3 {
             font-size: 14px;
             color: #666;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 12px;
+        }
+
+        .stat-info {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .user-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .user-card h3 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
         .user-card p {
             font-size: 18px;
             font-weight: 700;
-            color: #222;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .user-info {
             font-size: 13px;
-            color: #999;
+            opacity: 0.85;
             line-height: 1.8;
         }
 
-        .balance-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 12px;
-            padding: 32px;
-            text-align: center;
-            flex: 1;
-            min-width: 300px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
         }
 
-        .balance-label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-
-        .balance-amount {
-            font-size: 44px;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .deposit-btn {
-            background: white;
-            color: #667eea;
-            padding: 12px 24px;
+        .action-btn {
+            padding: 14px 24px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            width: 100%;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .deposit-btn:hover {
+        .btn-deposit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-deposit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
+        .btn-withdraw {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .btn-withdraw:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-container h3 {
+            margin-bottom: 16px;
+            color: #222;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .tradingview-widget-container {
+            width: 100%;
+            height: 400px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Deposit Form */
         .deposit-form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
         }
 
         .payment-option {
@@ -625,14 +695,14 @@
         }
 
         .payment-icon {
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 8px;
         }
 
         .payment-name {
             font-weight: 600;
             color: #222;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .address-box {
@@ -705,9 +775,9 @@
             border-radius: 4px;
         }
 
-        .paid-btn {
+        .action-form-btn {
             width: 100%;
-            background: #4CAF50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 14px;
             border: none;
@@ -719,14 +789,71 @@
             transition: all 0.3s;
         }
 
-        .paid-btn:hover {
-            background: #45a049;
+        .action-form-btn:hover:not(:disabled) {
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
-        .paid-btn:disabled {
+        .action-form-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 24px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            z-index: 3000;
+            animation: slideIn 0.4s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(400px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification.error {
+            border-left-color: #ff6b6b;
+            background: #ffe0e0;
+        }
+
+        .notification.success {
+            border-left-color: #4CAF50;
+            background: #e8f5e9;
+        }
+
+        .notification-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .notification.error .notification-title {
+            color: #c33;
+        }
+
+        .notification.success .notification-title {
+            color: #2e7d32;
+        }
+
+        .notification.error .notification-content {
+            color: #d32f2f;
+        }
+
+        .notification.success .notification-content {
+            color: #1b5e20;
         }
 
         /* Footer */
@@ -753,20 +880,18 @@
                 font-size: 16px;
             }
 
-            .dashboard-header {
-                flex-direction: column;
-            }
-
-            .user-card, .balance-card {
-                min-width: 100%;
-            }
-
             .about-content {
                 grid-template-columns: 1fr;
             }
 
             .navbar-links {
                 gap: 16px;
+            }
+
+            .notification {
+                right: 12px;
+                left: 12px;
+                max-width: 100%;
             }
         }
 
@@ -785,15 +910,24 @@
             animation: slideUp 0.3s ease;
         }
 
-        .user-nav-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
         }
 
-        .user-name {
-            font-size: 14px;
-            opacity: 0.9;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
@@ -807,14 +941,14 @@
             <a class="navbar-link" onclick="scrollTo('plans')">Plans</a>
             <button class="btn-login" onclick="showLoginModal()">Login</button>
         </div>
-        <div class="user-nav-info" id="userNavInfo" style="display: none;">
+        <div class="user-nav-info" id="userNavInfo">
             <span class="user-name" id="navUserName"></span>
             <button class="btn-login" onclick="logout()">Logout</button>
         </div>
     </nav>
 
     <!-- Landing Page -->
-    <div id="landingPage" class="landing-page">
+    <div id="landingPage">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
@@ -960,58 +1094,60 @@
     </div>
 
     <!-- Dashboard Page -->
-    <div id="dashboardPage" style="display: none;">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="navbar-brand">💼 EXPRESS PREMIUM GRANTS</div>
-            <div class="navbar-links">
-                <span class="user-name" id="dashNavName"></span>
-                <button class="btn-login" onclick="logout()">Logout</button>
-            </div>
-        </nav>
-
+    <div id="dashboardPage">
         <div class="dashboard">
             <div class="container">
-                <h2 style="margin-bottom: 32px; color: #222;">Welcome to Your Dashboard</h2>
-
+                <!-- Dashboard Header Stats -->
                 <div class="dashboard-header">
                     <div class="user-card">
-                        <h3>Registration Information</h3>
+                        <h3>👤 Member Information</h3>
+                        <p id="dashName">Loading...</p>
                         <div class="user-info">
-                            <p><strong>Name:</strong> <span id="dashName">Loading...</span></p>
-                            <p><strong>Email:</strong> <span id="dashEmail">Loading...</span></p>
-                            <p><strong>Registration:</strong> <span id="dashDate">Loading...</span></p>
-                            <p><strong>Member ID:</strong> <span id="dashId">Loading...</span></p>
+                            <p><strong>Email:</strong> <span id="dashEmail">-</span></p>
+                            <p><strong>Member ID:</strong> <span id="dashId">-</span></p>
+                            <p><strong>Joined:</strong> <span id="dashDate">-</span></p>
                         </div>
                     </div>
 
-                    <div class="balance-card">
-                        <div class="balance-label">Current Balance</div>
-                        <div class="balance-amount" id="balanceAmount">$0.00</div>
-                        <button class="deposit-btn" onclick="showDepositModal()">💳 Make a Deposit</button>
+                    <div class="stat-card">
+                        <h3>💰 Current Balance</h3>
+                        <div class="stat-value" id="balanceAmount">$0.00</div>
+                        <div class="stat-info">Total invested: <strong id="totalInvested">$0.00</strong></div>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>📈 Active Tasks</h3>
+                        <div class="stat-value" id="activeTasks">0</div>
+                        <div class="stat-info">System Status: <strong style="color: #4CAF50;">🟢 Active</strong></div>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>🏦 Withdrawn</h3>
+                        <div class="stat-value" id="totalWithdrawn">$0.00</div>
+                        <div class="stat-info">Lifetime withdrawals</div>
                     </div>
                 </div>
 
-                <div style="margin-top: 40px; background: white; padding: 32px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
-                    <h3 style="margin-bottom: 24px; color: #222; font-size: 20px;">Quick Stats</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
-                        <div>
-                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Total Invested</div>
-                            <div style="font-size: 28px; font-weight: 700; color: #667eea;" id="totalInvested">$0.00</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Active Tasks</div>
-                            <div style="font-size: 28px; font-weight: 700; color: #667eea;">0</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Total Withdrawn</div>
-                            <div style="font-size: 28px; font-weight: 700; color: #667eea;">$0.00</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 14px; color: #666; margin-bottom: 8px;">System Status</div>
-                            <div style="font-size: 28px; font-weight: 700; color: #4CAF50;">🟢 Active</div>
-                        </div>
-                    </div>
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn btn-deposit" onclick="showDepositModal()">
+                        💳 Deposit Funds
+                    </button>
+                    <button class="action-btn btn-withdraw" onclick="showWithdrawModal()">
+                        🏦 Withdraw Funds
+                    </button>
+                </div>
+
+                <!-- Trading View Chart -->
+                <div class="chart-container">
+                    <h3>📊 Market Overview (BTC/USDT)</h3>
+                    <div class="tradingview-widget-container" id="tradingview-widget"></div>
+                </div>
+
+                <!-- Alternative Chart -->
+                <div class="chart-container">
+                    <h3>📉 Price Chart</h3>
+                    <div class="tradingview-widget-container" id="tradingview-widget-2"></div>
                 </div>
             </div>
         </div>
@@ -1043,7 +1179,7 @@
                     <input type="checkbox" id="termsCheck" required>
                     <label for="termsCheck">I agree to the Terms & Conditions</label>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Create Account</button>
+                <button type="submit" class="action-form-btn">Create Account</button>
             </form>
         </div>
     </div>
@@ -1062,7 +1198,7 @@
                     <label class="form-label">Password *</label>
                     <input type="password" class="form-input" id="loginPassword" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Login</button>
+                <button type="submit" class="action-form-btn">Login</button>
             </form>
         </div>
     </div>
@@ -1071,26 +1207,22 @@
     <div id="depositModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('depositModal')">×</button>
-            <h2 class="modal-title">Make a Deposit</h2>
+            <h2 class="modal-title">Deposit Funds</h2>
             
             <div style="margin-bottom: 24px;">
                 <label class="form-label">Select Investment Plan</label>
                 <div class="deposit-form">
                     <div class="payment-option" onclick="selectAmount(50)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$50</div>
-                        <div style="font-size: 12px; color: #666;">Starter</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$50</div>
                     </div>
                     <div class="payment-option" onclick="selectAmount(500)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$500</div>
-                        <div style="font-size: 12px; color: #666;">Professional</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$500</div>
                     </div>
                     <div class="payment-option" onclick="selectAmount(1000)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$1000</div>
-                        <div style="font-size: 12px; color: #666;">Business</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$1000</div>
                     </div>
                     <div class="payment-option" onclick="selectAmount(4000)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$4000</div>
-                        <div style="font-size: 12px; color: #666;">Enterprise</div>
+                        <div style="font-weight: 700; color: #667eea; font-size: 18px;">$4000</div>
                     </div>
                 </div>
             </div>
@@ -1127,9 +1259,35 @@
                 <div class="info-text">💡 Send exactly the amount for your chosen plan. Payment will be verified automatically.</div>
             </div>
 
-            <div class="success-message" id="successMsg"></div>
+            <button class="action-form-btn" onclick="handlePaymentConfirm()" id="paidBtn" disabled>I Have Paid - Proceed to Support</button>
+        </div>
+    </div>
 
-            <button class="paid-btn" onclick="handlePaymentConfirm()" id="paidBtn" disabled>I Have Paid - Proceed</button>
+    <!-- Withdraw Modal -->
+    <div id="withdrawModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('withdrawModal')">��</button>
+            <h2 class="modal-title">Withdraw Funds</h2>
+            <div class="form-group">
+                <label class="form-label">Withdraw Amount</label>
+                <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
+                    <div style="font-size: 14px; color: #666; margin-bottom: 8px;">Available Balance</div>
+                    <div style="font-size: 32px; font-weight: 700; color: #667eea;" id="withdrawBalance">$0.00</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Enter Amount *</label>
+                <input type="number" class="form-input" id="withdrawAmount" placeholder="e.g., 100" step="0.01" min="0">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Bank Name</label>
+                <input type="text" class="form-input" id="bankName" placeholder="Your Bank">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Account Number</label>
+                <input type="text" class="form-input" id="accountNumber" placeholder="Your Account Number">
+            </div>
+            <button class="action-form-btn" onclick="handleWithdraw()">Request Withdrawal</button>
         </div>
     </div>
 
@@ -1138,15 +1296,16 @@
         let selectedAmount = null;
         let selectedPayment = null;
 
-        // Check if user is logged in on page load
+        // Initialize on page load
         window.addEventListener('load', () => {
             const savedUser = localStorage.getItem('dthUserSession');
             if (savedUser) {
                 try {
                     currentUser = JSON.parse(savedUser);
                     showDashboard();
+                    initTradingViewWidgets();
                 } catch (e) {
-                    console.error('Error parsing saved user:', e);
+                    console.error('Error loading user:', e);
                     localStorage.removeItem('dthUserSession');
                 }
             }
@@ -1162,6 +1321,16 @@
 
         function showDepositModal() {
             document.getElementById('depositModal').classList.add('show');
+            resetDepositForm();
+        }
+
+        function showWithdrawModal() {
+            if (!currentUser || currentUser.balance <= 0) {
+                showNotification('No Funds Available', 'You don\'t have any balance or active work available for withdrawal. Please contact support at https://t.me/customer_assist01', 'error');
+                return;
+            }
+            document.getElementById('withdrawBalance').textContent = '$' + currentUser.balance.toFixed(2);
+            document.getElementById('withdrawModal').classList.add('show');
         }
 
         function closeModal(modalId) {
@@ -1187,15 +1356,17 @@
                 id: 'DTH' + Math.random().toString(36).substr(2, 9).toUpperCase(),
                 date: new Date().toLocaleDateString(),
                 balance: 0,
+                withdrawn: 0,
                 createdAt: new Date().getTime()
             };
 
-            // Save to localStorage with session key
             localStorage.setItem('dthUserSession', JSON.stringify(userData));
             currentUser = userData;
             closeModal('registerModal');
             showDashboard();
+            initTradingViewWidgets();
             document.getElementById('registerForm').reset();
+            showNotification('Welcome!', `Welcome ${fullName}! Your account has been created successfully.`, 'success');
         }
 
         function handleLogin(e) {
@@ -1203,32 +1374,29 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
-            // For demo purposes, we'll check against saved session
-            // In a real app, this would call an API
             const savedUser = JSON.parse(localStorage.getItem('dthUserSession') || '{}');
             
             if (savedUser.email === email && savedUser.password === password) {
                 currentUser = savedUser;
                 closeModal('loginModal');
                 showDashboard();
+                initTradingViewWidgets();
                 document.getElementById('loginForm').reset();
+                showNotification('Login Successful', `Welcome back, ${currentUser.name}!`, 'success');
             } else {
-                alert('Invalid email or password!');
+                showNotification('Login Failed', 'Invalid email or password!', 'error');
             }
         }
 
         function showDashboard() {
-            // Hide landing page and show dashboard
             document.getElementById('landingPage').style.display = 'none';
             document.getElementById('dashboardPage').style.display = 'block';
             document.getElementById('navLinks').style.display = 'none';
             document.getElementById('userNavInfo').style.display = 'flex';
-            
             updateDashboard();
         }
 
         function hideDashboard() {
-            // Hide dashboard and show landing page
             document.getElementById('dashboardPage').style.display = 'none';
             document.getElementById('landingPage').style.display = 'block';
             document.getElementById('navLinks').style.display = 'flex';
@@ -1247,18 +1415,19 @@
             document.getElementById('dashDate').textContent = currentUser.date;
             document.getElementById('dashId').textContent = currentUser.id;
             document.getElementById('navUserName').textContent = `Welcome, ${currentUser.name}!`;
-            document.getElementById('dashNavName').textContent = currentUser.name;
             document.getElementById('balanceAmount').textContent = '$' + (currentUser.balance || 0).toFixed(2);
             document.getElementById('totalInvested').textContent = '$' + (currentUser.balance || 0).toFixed(2);
+            document.getElementById('totalWithdrawn').textContent = '$' + (currentUser.withdrawn || 0).toFixed(2);
+            document.getElementById('activeTasks').textContent = currentUser.balance > 0 ? Math.floor(currentUser.balance / 100) : 0;
         }
 
         function logout() {
-            // Remove session and go back to landing page
             localStorage.removeItem('dthUserSession');
             currentUser = null;
             hideDashboard();
             document.getElementById('registerForm').reset();
             document.getElementById('loginForm').reset();
+            showNotification('Logged Out', 'You have been successfully logged out.', 'success');
         }
 
         function selectAmount(amount) {
@@ -1308,32 +1477,84 @@
 
         function handlePaymentConfirm() {
             if (!selectedAmount || !selectedPayment) {
-                alert('Please select amount and payment method');
+                showNotification('Incomplete', 'Please select both amount and payment method', 'error');
                 return;
             }
 
-            const successMsg = document.getElementById('successMsg');
-            successMsg.textContent = `✓ Payment confirmed! Opening Telegram support...`;
-            successMsg.classList.add('show');
-
-            // Update user balance and save to localStorage
-            currentUser.balance += selectedAmount;
-            localStorage.setItem('dthUserSession', JSON.stringify(currentUser));
+            const btn = document.getElementById('paidBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span> Processing...';
 
             setTimeout(() => {
-                window.open('https://t.me/customer_assist01', '_blank');
+                currentUser.balance += selectedAmount;
+                localStorage.setItem('dthUserSession', JSON.stringify(currentUser));
+                
+                showNotification('Payment Received', `Your ${selectedPayment.toUpperCase()} payment of $${selectedAmount} has been received. Our team will verify and process within 24 hours.`, 'success');
+                
                 closeModal('depositModal');
                 updateDashboard();
                 selectedAmount = null;
                 selectedPayment = null;
-                successMsg.classList.remove('show');
-                document.querySelectorAll('#depositModal .payment-option').forEach(el => {
-                    el.classList.remove('selected');
-                });
-                document.getElementById('usdtAddress').classList.remove('show');
-                document.getElementById('btcAddress').classList.remove('show');
-                document.getElementById('paidBtn').disabled = true;
+                resetDepositForm();
+                
+                window.open('https://t.me/customer_assist01', '_blank');
+                
+                btn.disabled = false;
+                btn.innerHTML = 'I Have Paid - Proceed to Support';
             }, 2000);
+        }
+
+        function handleWithdraw() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const bankName = document.getElementById('bankName').value;
+            const accountNumber = document.getElementById('accountNumber').value;
+
+            if (!amount || amount <= 0) {
+                showNotification('Invalid Amount', 'Please enter a valid withdrawal amount', 'error');
+                return;
+            }
+
+            if (amount > currentUser.balance) {
+                showNotification('Insufficient Balance', `You can only withdraw up to $${currentUser.balance.toFixed(2)}`, 'error');
+                return;
+            }
+
+            if (!bankName || !accountNumber) {
+                showNotification('Incomplete', 'Please provide bank name and account number', 'error');
+                return;
+            }
+
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-btn"><span class="spinner"></span> Processing...</span>';
+
+            setTimeout(() => {
+                currentUser.balance -= amount;
+                currentUser.withdrawn += amount;
+                localStorage.setItem('dthUserSession', JSON.stringify(currentUser));
+                
+                showNotification('Withdrawal Requested', `Your withdrawal request of $${amount.toFixed(2)} has been submitted. You will receive your funds within 24-48 hours.`, 'success');
+                
+                closeModal('withdrawModal');
+                updateDashboard();
+                document.getElementById('withdrawAmount').value = '';
+                document.getElementById('bankName').value = '';
+                document.getElementById('accountNumber').value = '';
+                
+                btn.disabled = false;
+                btn.innerHTML = 'Request Withdrawal';
+            }, 2000);
+        }
+
+        function resetDepositForm() {
+            selectedAmount = null;
+            selectedPayment = null;
+            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.getElementById('usdtAddress').classList.remove('show');
+            document.getElementById('btcAddress').classList.remove('show');
+            document.getElementById('paidBtn').disabled = true;
         }
 
         function selectPlan(amount) {
@@ -1349,6 +1570,68 @@
             const element = document.getElementById(section);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showNotification(title, message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-title">${title}</div>
+                <div class="notification-content">${message}</div>
+            `;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideIn 0.4s ease reverse';
+                setTimeout(() => {
+                    notification.remove();
+                }, 400);
+            }, 5000);
+        }
+
+        function initTradingViewWidgets() {
+            // Clear existing widgets
+            const container1 = document.getElementById('tradingview-widget');
+            const container2 = document.getElementById('tradingview-widget-2');
+            if (container1) container1.innerHTML = '';
+            if (container2) container2.innerHTML = '';
+
+            // Create mini chart widget
+            if (container1) {
+                const script1 = document.createElement('script');
+                script1.type = 'text/javascript';
+                script1.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+                script1.async = true;
+                script1.innerHTML = JSON.stringify({
+                    "symbol": "BINANCE:BTCUSDT",
+                    "width": "100%",
+                    "height": "100%",
+                    "locale": "en",
+                    "dateRange": "12M",
+                    "colorTheme": "light",
+                    "thinVolume": false,
+                    "isTransparent": false,
+                    "autosize": true,
+                    "largeChartUrl": ""
+                });
+                container1.appendChild(script1);
+            }
+
+            // Create crypto widget
+            if (container2) {
+                const script2 = document.createElement('script');
+                script2.type = 'text/javascript';
+                script2.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
+                script2.async = true;
+                script2.innerHTML = JSON.stringify({
+                    "symbol": "BINANCE:BTCUSDT",
+                    "width": "100%",
+                    "locale": "en",
+                    "colorTheme": "light",
+                    "isTransparent": false
+                });
+                container2.appendChild(script2);
             }
         }
     </script>
