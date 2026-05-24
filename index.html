@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXPRESS PREMIUM GRANTS - DTH Daily Task Highlights</title>
+    <title>CashFlow - Digital Wallet</title>
     <style>
         * {
             margin: 0;
@@ -12,1899 +12,1229 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: #f8f9fb;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 12px rgba(102, 126, 234, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar-brand {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .navbar-link {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            opacity: 0.9;
-        }
-
-        .navbar-link:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        .btn-login {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-            padding: 8px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 14px;
-        }
-
-        .btn-login:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        .user-nav-info {
-            display: none;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .user-name {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 24px;
-            text-align: center;
-            animation: fadeIn 0.8s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 16px;
-            font-weight: 700;
-            animation: slideDown 0.8s ease 0.2s both;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 32px;
-            opacity: 0.95;
-            animation: slideDown 0.8s ease 0.4s both;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideDown 0.8s ease 0.6s both;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #667eea;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 60px 24px;
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 16px;
-            color: #222;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 48px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            animation: slideUp 0.8s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 32px;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid #e8e8e8;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            background: white;
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .feature-card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #222;
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* About Section */
-        .about {
-            padding: 60px 24px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 32px;
-            margin-bottom: 24px;
-            color: #222;
-        }
-
-        .about-text p {
-            margin-bottom: 16px;
-            color: #555;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .benefits-list {
-            list-style: none;
-            margin-top: 24px;
-        }
-
-        .benefits-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: #555;
-        }
-
-        .benefits-list li:before {
-            content: "✓";
-            color: #667eea;
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .about-image {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image-icon {
-            font-size: 120px;
-            margin-bottom: 24px;
-        }
-
-        .about-image p {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        /* Plans Section */
-        .plans {
-            padding: 60px 24px;
-            background: white;
-        }
-
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .plan-card {
-            background: white;
-            border: 2px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 32px;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .plan-card:hover {
-            border-color: #667eea;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-        }
-
-        .plan-card.popular {
-            border-color: #667eea;
-            transform: scale(1.05);
-        }
-
-        .plan-card.popular::before {
-            content: "MOST POPULAR";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #667eea;
-            color: white;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .plan-name {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #222;
-        }
-
-        .plan-price {
-            font-size: 36px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 24px;
-        }
-
-        .plan-price span {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin: 24px 0;
-            text-align: left;
-        }
-
-        .plan-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .plan-features li:before {
-            content: "✓ ";
-            color: #667eea;
-            font-weight: 700;
-        }
-
-        .btn-plan {
-            width: 100%;
-            padding: 12px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 24px;
-        }
-
-        .btn-plan:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-        }
-
-        /* Dashboard Styles */
-        .dashboard {
-            display: none;
-            padding: 40px 24px 80px;
-            min-height: calc(100vh - 80px);
-            background: #f8f9fb;
-        }
-
-        .dashboard.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .dashboard-top {
-            margin-bottom: 32px;
-        }
-
-        .welcome-section {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .welcome-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 8px;
-        }
-
-        .welcome-subtitle {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* Balance Display */
-        .balance-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 32px;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
-        }
-
-        .balance-label {
-            font-size: 13px;
-            opacity: 0.85;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .balance-amount {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 32px;
-        }
-
-        /* Action Buttons */
-        .action-buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .action-btn-card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid #e8e8e8;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .action-btn-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.12);
-            border-color: #667eea;
-        }
-
-        .action-btn-card.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-        }
-
-        .action-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 64px;
-            height: 64px;
-            background: #f0f0f0;
-            border-radius: 12px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: all 0.3s;
-        }
-
-        .action-btn-card.active .action-icon {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .action-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #222;
-        }
-
-        .action-btn-card.active .action-label {
-            color: white;
-        }
-
-        /* Promo Card */
-        .promo-card {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.15);
-        }
-
-        .promo-icon {
-            font-size: 64px;
-            flex-shrink: 0;
-        }
-
-        .promo-content h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 8px;
-        }
-
-        .promo-content p {
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .promo-link {
-            color: #667eea;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* Tabs */
-        .tab-buttons {
-            display: flex;
-            gap: 0;
-            margin-bottom: 32px;
-            border-bottom: 2px solid #e8e8e8;
-            background: white;
-            border-radius: 12px 12px 0 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
             padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .tab-btn {
-            padding: 16px 24px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            color: #999;
-            transition: all 0.3s;
-            position: relative;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab-btn.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        /* Crypto List */
-        .crypto-section {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .crypto-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 0;
-            border-bottom: 1px solid #f0f0f0;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .crypto-item:last-child {
-            border-bottom: none;
-        }
-
-        .crypto-item:hover {
-            background: #f8f9fb;
-            padding-left: 12px;
-            padding-right: 12px;
-            border-radius: 8px;
-        }
-
-        .crypto-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .crypto-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .crypto-btc {
-            background: linear-gradient(135deg, #f7931a 0%, #e8a416 100%);
-        }
-
-        .crypto-trx {
-            background: linear-gradient(135deg, #eb0029 0%, #c30015 100%);
-        }
-
-        .crypto-info h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 4px;
-        }
-
-        .crypto-info p {
-            font-size: 13px;
-            color: #999;
-        }
-
-        .crypto-right {
-            text-align: right;
-        }
-
-        .crypto-price {
-            font-size: 16px;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 4px;
-        }
-
-        .crypto-change {
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .crypto-change.positive {
-            color: #4CAF50;
-        }
-
-        .crypto-change.negative {
-            color: #ff6b6b;
-        }
-
-        /* Bottom Navigation */
-        .bottom-nav {
+        /* Loading Screen */
+        .loading-screen {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
-            right: 0;
-            background: white;
-            border-top: 1px solid #e8e8e8;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            height: 80px;
-            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
-            z-index: 999;
-        }
-
-        .nav-item {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 12px;
-            flex: 1;
-            height: 100%;
+            z-index: 9999;
+            animation: fadeOut 0.8s ease-in-out 2.5s forwards;
         }
 
-        .nav-item.active {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-radius: 8px;
-        }
-
-        .nav-item.active .nav-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .nav-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            background: #f0f0f0;
-            transition: all 0.3s;
-        }
-
-        .nav-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: #666;
-        }
-
-        .nav-item.active .nav-label {
-            color: #667eea;
-        }
-
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            animation: fadeIn 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 480px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.4s ease;
-            position: relative;
-            margin: auto;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: #f0f0f0;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .modal-close:hover {
-            background: #e0e0e0;
-        }
-
-        .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: #222;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .form-checkbox input {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .form-checkbox label {
-            cursor: pointer;
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Buttons */
-        .action-form-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 16px;
-            transition: all 0.3s;
-        }
-
-        .action-form-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .action-form-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Payment Option */
-        .payment-option {
-            background: #f8f9fa;
-            border: 2px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 12px;
-        }
-
-        .payment-option:hover,
-        .payment-option.selected {
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-        }
-
-        .payment-option.selected {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        }
-
-        .payment-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .payment-name {
-            font-weight: 600;
-            color: #222;
-            font-size: 14px;
-        }
-
-        /* Address Box */
-        .address-box {
-            background: #f8f9fa;
-            border: 1px solid #e8e8e8;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 16px 0;
+        .loading-screen.hidden {
             display: none;
         }
 
-        .address-box.show {
-            display: block;
-            animation: slideUp 0.3s ease;
-        }
-
-        .address-label {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .address-content {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .address-text {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            flex: 1;
-            word-break: break-all;
-            color: #333;
-        }
-
-        .copy-btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-
-        .copy-btn:hover {
-            background: #764ba2;
-        }
-
-        .copy-btn.copied {
-            background: #4CAF50;
-        }
-
-        .info-text {
-            font-size: 13px;
-            color: #666;
-            margin: 16px 0;
-            padding: 12px;
-            background: #f0f0f0;
-            border-left: 3px solid #667eea;
-            border-radius: 4px;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 24px;
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            z-index: 3000;
-            animation: slideIn 0.4s ease;
-            border-left: 4px solid #667eea;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(400px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .notification.error {
-            border-left-color: #ff6b6b;
-            background: #ffe0e0;
-        }
-
-        .notification.success {
-            border-left-color: #4CAF50;
-            background: #e8f5e9;
-        }
-
-        .notification-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .notification.error .notification-title {
-            color: #c33;
-        }
-
-        .notification.success .notification-title {
-            color: #2e7d32;
-        }
-
-        /* Footer */
-        .footer {
-            background: #222;
-            color: #999;
-            text-align: center;
-            padding: 32px 24px;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .action-buttons-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                max-width: 95%;
-            }
-
-            .promo-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .balance-amount {
-                font-size: 36px;
-            }
-
-            .dashboard {
-                padding-bottom: 120px;
-            }
-
-            .bottom-nav {
-                height: 70px;
-            }
-
-            .nav-item {
-                gap: 2px;
-            }
-
-            .nav-label {
-                font-size: 10px;
-            }
+        @keyframes fadeOut {
+            from { opacity: 1; visibility: visible; }
+            to { opacity: 0; visibility: hidden; }
         }
 
         .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid white;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
+            animation: spin 1.5s linear infinite;
+            margin-bottom: 20px;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .loading-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            max-width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            animation: slideIn 0.6s ease-out 2.5s both;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
+            color: white;
+            padding: 24px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 168, 107, 0.2);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-logo {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        /* Balance Section */
+        .balance-section {
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
+            color: white;
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        .balance-label {
+            font-size: 14px;
+            opacity: 0.85;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .balance-amount {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .balance-status {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 20px;
+            background: white;
+            margin-bottom: 8px;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 12px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .action-btn:hover {
+            background: #e8e8e8;
+            transform: translateY(-4px);
+        }
+
+        .action-icon {
+            font-size: 28px;
+        }
+
+        /* Card Section */
+        .card-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .card-item {
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 168, 107, 0.2);
+        }
+
+        .card-item-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .card-label {
+            font-size: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            font-size: 20px;
+        }
+
+        .card-number {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .card-name {
+            font-weight: 600;
+        }
+
+        /* Recent Activity */
+        .activity-section {
+            background: white;
+            padding: 20px;
+        }
+
+        .activity-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .activity-info h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .activity-info p {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .activity-amount {
+            font-size: 13px;
+            font-weight: 700;
+            color: #00a86b;
+        }
+
+        /* Withdraw Button */
+        .withdraw-btn {
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px;
+            width: calc(100% - 40px);
+            box-shadow: 0 4px 15px rgba(0, 168, 107, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .withdraw-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 168, 107, 0.4);
+        }
+
+        .withdraw-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .spinner-small {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        .spinner-small.show {
+            display: inline-block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: flex-end;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            border-radius: 24px 24px 0 0;
+            padding: 24px 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .modal-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Face Verification */
+        .verification-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .verification-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .verification-subtitle {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .camera-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        #videoFeed {
+            width: 100%;
+            height: 300px;
+            display: none;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .camera-placeholder {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            color: #999;
+        }
+
+        .camera-icon {
+            font-size: 48px;
+        }
+
+        .camera-text {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .verification-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .verify-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .verify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 168, 107, 0.3);
+        }
+
+        .verify-cancel-btn {
+            flex: 1;
+            background: #f0f0f0;
+            color: #333;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .verify-cancel-btn:hover {
+            background: #e8e8e8;
+        }
+
+        /* Verification Result */
+        .verification-result {
+            background: #fee;
+            border: 2px solid #f87171;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .result-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .result-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+        }
+
+        .result-text {
+            font-size: 12px;
+            color: #dc2626;
+            line-height: 1.5;
+        }
+
+        /* Alternative Method */
+        .alternative-section {
+            background: #f0f7ff;
+            border: 2px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .alternative-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alternative-option {
+            background: white;
+            border: 2px solid #dbeafe;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alternative-option:hover {
+            border-color: #00a86b;
+            background: #f0fdf4;
+        }
+
+        .alternative-icon {
+            font-size: 24px;
+        }
+
+        .alternative-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .alternative-method-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .alternative-method-desc {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .alternative-arrow {
+            font-size: 18px;
+            color: #00a86b;
+        }
+
+        /* Receipt */
+        .receipt-container {
+            background: white;
+            border: 2px solid #00a86b;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px;
+            box-shadow: 0 4px 20px rgba(0, 168, 107, 0.15);
+        }
+
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 16px;
+        }
+
+        .receipt-logo {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .receipt-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .receipt-subtitle {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .receipt-status {
+            display: inline-block;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .receipt-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .receipt-label {
+            color: #999;
+            font-weight: 600;
+        }
+
+        .receipt-value {
+            color: #333;
+            font-weight: 700;
+        }
+
+        /* Charge Section */
+        .charge-notice {
+            background: linear-gradient(135deg, #fee 0%, #fdd 100%);
+            border: 2px solid #f87171;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px;
+            color: #991b1b;
+        }
+
+        .charge-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .charge-content {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .charge-content p {
+            margin-bottom: 8px;
+        }
+
+        .charge-content ul {
+            margin-left: 18px;
+            margin-top: 8px;
+        }
+
+        .charge-content li {
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .charge-amount {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 16px 0;
+            text-align: center;
+            background: rgba(159, 18, 18, 0.1);
+            padding: 14px;
+            border-radius: 8px;
+            color: #991b1b;
+        }
+
+        .charge-explanation {
+            background: rgba(159, 18, 18, 0.05);
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-top: 14px;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .info-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .info-text p {
+            font-size: 11px;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f2ff 100%);
+            border: 2px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-text {
+            font-size: 13px;
+            color: #1e40af;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            background: linear-gradient(135deg, #00a86b 0%, #00c896 100%);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 168, 107, 0.3);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 168, 107, 0.4);
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 82, 0.1) 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .success-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #15803d;
+            margin-bottom: 4px;
+        }
+
+        .success-text {
+            font-size: 12px;
+            color: #16a34a;
+            line-height: 1.5;
+        }
+
+        /* Hidden */
+        .hidden-section {
+            display: none;
+        }
+
+        .hidden-section.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .balance-amount {
+                font-size: 40px;
+            }
+
+            .action-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .modal-content {
+                max-height: 100vh;
+                border-radius: 20px 20px 0 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-brand">💼 EXPRESS PREMIUM GRANTS</div>
-        <div class="navbar-links" id="navLinks">
-            <a class="navbar-link" onclick="scrollTo('features')">Features</a>
-            <a class="navbar-link" onclick="scrollTo('about')">About</a>
-            <a class="navbar-link" onclick="scrollTo('plans')">Plans</a>
-            <button class="btn-login" onclick="showLoginModal()">Login</button>
-        </div>
-        <div class="user-nav-info" id="userNavInfo">
-            <span class="user-name" id="navUserName"></span>
-            <button class="btn-login" onclick="logout()">Logout</button>
-        </div>
-    </nav>
-
-    <!-- Landing Page -->
-    <div id="landingPage">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>DTH Daily Task Highlights</h1>
-                <p>Fully Automated Affiliate Marketing Platform - Risk-Free & Safe Passive Income</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="showRegisterModal()">Get Started</button>
-                    <button class="btn btn-secondary" onclick="scrollTo('about')">Learn More</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features" id="features">
-            <div class="container">
-                <h2 class="section-title">Why Choose DTH?</h2>
-                <p class="section-subtitle">Fully Automated. Completely Safe. Truly Profitable.</p>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🤖</div>
-                        <h3>100% Automated</h3>
-                        <p>The system runs automatically. Just listen, follow the process, and let technology work for you.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3>Risk-Free & Safe</h3>
-                        <p>Your investment is protected. No hidden fees. Transparent and secure transactions.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <h3>Quick Returns</h3>
-                        <p>See good profits from day one. Starting balance minimum $100. Withdraw anytime.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⏰</div>
-                        <h3>Flexible Withdrawals</h3>
-                        <p>Withdraw whenever you want. Create new tasks. Control your own timeline.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Track Everything</h3>
-                        <p>Real-time dashboard. Monitor your earnings, tasks, and withdrawals instantly.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🌍</div>
-                        <h3>Global Support</h3>
-                        <p>24/7 support available. Multiple payment methods. Instant assistance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about" id="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>About DTH Daily Task Highlights</h2>
-                        <p>DTH is a revolutionary automated affiliate marketing platform that combines cryptocurrency and modern technology to create a seamless passive income experience.</p>
-                        <p>Similar to crypto investment opportunities, but with built-in safeguards and transparency, DTH operates a fully automated system. You don't need technical skills or constant monitoring.</p>
-                        <ul class="benefits-list">
-                            <li>Minimum deposit just $100</li>
-                            <li>Immediate profit generation</li>
-                            <li>No technical knowledge required</li>
-                            <li>Withdraw profits anytime</li>
-                            <li>Create new tasks instantly</li>
-                            <li>Completely transparent operations</li>
-                        </ul>
-                    </div>
-                    <div class="about-image">
-                        <div class="about-image-icon">🚀</div>
-                        <p>Start Your Passive Income Journey Today</p>
-                        <p style="font-size: 48px; margin-top: 24px; color: #667eea;">DTH</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Plans Section -->
-        <section class="plans" id="plans">
-            <div class="container">
-                <h2 class="section-title">Investment Plans</h2>
-                <p class="section-subtitle">Choose the plan that fits your investment goals</p>
-                <div class="plans-grid">
-                    <div class="plan-card">
-                        <div class="plan-name">Starter</div>
-                        <div class="plan-price">$50<span>/month</span></div>
-                        <ul class="plan-features">
-                            <li>$50 Initial Investment</li>
-                            <li>Automated Daily Tasks</li>
-                            <li>Real-time Dashboard</li>
-                            <li>Email Support</li>
-                        </ul>
-                        <button class="btn-plan" onclick="selectPlan(50)">Get Started</button>
-                    </div>
-
-                    <div class="plan-card popular">
-                        <div class="plan-name">Professional</div>
-                        <div class="plan-price">$500<span>/month</span></div>
-                        <ul class="plan-features">
-                            <li>$500 Initial Investment</li>
-                            <li>Premium Daily Tasks</li>
-                            <li>Advanced Analytics</li>
-                            <li>Priority Support</li>
-                        </ul>
-                        <button class="btn-plan" onclick="selectPlan(500)">Get Started</button>
-                    </div>
-
-                    <div class="plan-card">
-                        <div class="plan-name">Business</div>
-                        <div class="plan-price">$1000<span>/month</span></div>
-                        <ul class="plan-features">
-                            <li>$1000 Initial Investment</li>
-                            <li>Premium+ Tasks</li>
-                            <li>Custom Analytics</li>
-                            <li>24/7 VIP Support</li>
-                        </ul>
-                        <button class="btn-plan" onclick="selectPlan(1000)">Get Started</button>
-                    </div>
-
-                    <div class="plan-card">
-                        <div class="plan-name">Enterprise</div>
-                        <div class="plan-price">$4000<span>/month</span></div>
-                        <ul class="plan-features">
-                            <li>$4000 Initial Investment</li>
-                            <li>Maximum Tasks</li>
-                            <li>Dedicated Account Manager</li>
-                            <li>Concierge Support</li>
-                        </ul>
-                        <button class="btn-plan" onclick="selectPlan(4000)">Get Started</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; 2024 EXPRESS PREMIUM GRANTS - DTH Daily Task Highlights. All rights reserved.</p>
-                <p style="margin-top: 16px; font-size: 12px;">For support: <a href="https://t.me/customer_assist01" target="_blank">Contact Support</a></p>
-            </div>
-        </footer>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner"></div>
+        <div class="loading-text">🟢 CashFlow</div>
     </div>
 
-    <!-- Dashboard Page -->
-    <div id="dashboardPage">
-        <div class="dashboard">
-            <div class="container">
-                <!-- Welcome Section -->
-                <div class="welcome-section">
-                    <div class="welcome-title" id="welcomeTitle">Welcome Back!</div>
-                    <div class="welcome-subtitle">Manage your portfolio and track your earnings</div>
-                </div>
-
-                <!-- Balance Section -->
-                <div class="balance-section">
-                    <div class="balance-label">Current Balance</div>
-                    <div class="balance-amount" id="balanceAmount">$0.00</div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="action-buttons-grid">
-                    <div class="action-btn-card" onclick="showActionButton('send')">
-                        <div class="action-icon">📤</div>
-                        <div class="action-label">Send</div>
-                    </div>
-                    <div class="action-btn-card" onclick="showActionButton('receive')">
-                        <div class="action-icon">📥</div>
-                        <div class="action-label">Receive</div>
-                    </div>
-                    <div class="action-btn-card" onclick="showDepositModal()">
-                        <div class="action-icon">🔄</div>
-                        <div class="action-label">Deposit</div>
-                    </div>
-                    <div class="action-btn-card" onclick="showWithdrawModal()">
-                        <div class="action-icon">➕</div>
-                        <div class="action-label">Withdraw</div>
-                    </div>
-                </div>
-
-                <!-- Promo Card -->
-                <div class="promo-card">
-                    <div class="promo-icon">💧</div>
-                    <div class="promo-content">
-                        <h3>Maximize Your Earnings</h3>
-                        <p>Get daily task highlights and watch your balance grow automatically</p>
-                        <a class="promo-link" href="https://t.me/customer_assist01" target="_blank">Learn more →</a>
-                    </div>
-                </div>
-
-                <!-- Tabs -->
-                <div class="tab-buttons">
-                    <button class="tab-btn active" onclick="switchTab('crypto')">Crypto</button>
-                    <button class="tab-btn" onclick="switchTab('watchlist')">Watchlist</button>
-                    <button class="tab-btn" onclick="switchTab('tasks')">Tasks</button>
-                </div>
-
-                <!-- Crypto List -->
-                <div class="crypto-section">
-                    <div id="cryptoContent">
-                        <div class="crypto-item">
-                            <div class="crypto-left">
-                                <div class="crypto-icon crypto-btc">₿</div>
-                                <div class="crypto-info">
-                                    <h4>BTC</h4>
-                                    <p>Bitcoin</p>
-                                </div>
-                            </div>
-                            <div class="crypto-right">
-                                <div class="crypto-price">$81,308.02</div>
-                                <div class="crypto-change positive">+1.23%</div>
-                            </div>
-                        </div>
-
-                        <div class="crypto-item">
-                            <div class="crypto-left">
-                                <div class="crypto-icon crypto-trx">🔴</div>
-                                <div class="crypto-info">
-                                    <h4>TRX</h4>
-                                    <p>Tron</p>
-                                </div>
-                            </div>
-                            <div class="crypto-right">
-                                <div class="crypto-price">$0.34</div>
-                                <div class="crypto-change positive">+0.90%</div>
-                            </div>
-                        </div>
-
-                        <div class="crypto-item">
-                            <div class="crypto-left">
-                                <div class="crypto-icon crypto-btc">💰</div>
-                                <div class="crypto-info">
-                                    <h4>ETH</h4>
-                                    <p>Ethereum</p>
-                                </div>
-                            </div>
-                            <div class="crypto-right">
-                                <div class="crypto-price">$3,240.50</div>
-                                <div class="crypto-change positive">+2.15%</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="watchlistContent" style="display: none;">
-                        <div style="text-align: center; padding: 40px; color: #999;">
-                            <div style="font-size: 32px; margin-bottom: 12px;">📋</div>
-                            <p>Your watchlist is empty</p>
-                            <p style="font-size: 12px; margin-top: 8px;">Add cryptocurrencies to track</p>
-                        </div>
-                    </div>
-
-                    <div id="tasksContent" style="display: none;">
-                        <div style="text-align: center; padding: 40px; color: #999;">
-                            <div style="font-size: 32px; margin-bottom: 12px;">📝</div>
-                            <p>Active Tasks</p>
-                            <p style="font-size: 14px; font-weight: 600; color: #667eea; margin-top: 12px;" id="activeTasks">0 Tasks Running</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Info Section -->
-                <div style="background: white; border-radius: 12px; padding: 24px; margin-top: 32px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);">
-                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #222;">Account Information</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 14px;">
-                        <div>
-                            <div style="color: #999; margin-bottom: 4px;">Name</div>
-                            <div style="font-weight: 600; color: #222;" id="dashName">-</div>
-                        </div>
-                        <div>
-                            <div style="color: #999; margin-bottom: 4px;">Member ID</div>
-                            <div style="font-weight: 600; color: #222;" id="dashId">-</div>
-                        </div>
-                        <div>
-                            <div style="color: #999; margin-bottom: 4px;">Email</div>
-                            <div style="font-weight: 600; color: #222; word-break: break-all;" id="dashEmail">-</div>
-                        </div>
-                        <div>
-                            <div style="color: #999; margin-bottom: 4px;">Joined</div>
-                            <div style="font-weight: 600; color: #222;" id="dashDate">-</div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="app-logo">💚</div>
+                <div class="app-name">CashFlow</div>
+            </div>
+            <div class="header-icons">
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">⚙️</button>
             </div>
         </div>
 
-        <!-- Bottom Navigation -->
-        <div class="bottom-nav">
-            <div class="nav-item active" onclick="switchTab('crypto')">
-                <div class="nav-icon">🏠</div>
-                <div class="nav-label">Home</div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Balance Section -->
+            <div class="balance-section">
+                <div class="balance-label">Total Balance</div>
+                <div class="balance-amount">
+                    <span>$</span>
+                    <span id="displayBalance">6,000</span>
+                </div>
+                <div class="balance-status">✓ Ready to use</div>
             </div>
-            <div class="nav-item" onclick="switchTab('watchlist')">
-                <div class="nav-icon">📈</div>
-                <div class="nav-label">Trending</div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn">
+                    <div class="action-icon">📤</div>
+                    <div>Send</div>
+                </button>
+                <button class="action-btn">
+                    <div class="action-icon">📥</div>
+                    <div>Request</div>
+                </button>
+                <button class="action-btn">
+                    <div class="action-icon">💳</div>
+                    <div>Cards</div>
+                </button>
+                <button class="action-btn">
+                    <div class="action-icon">📊</div>
+                    <div>Activity</div>
+                </button>
             </div>
-            <div class="nav-item" onclick="showDepositModal()">
-                <div class="nav-icon">🔄</div>
-                <div class="nav-label">Trade</div>
+
+            <!-- Card Section -->
+            <div class="card-section">
+                <div class="card-header">💳 My Cards</div>
+                <div class="card-item">
+                    <div class="card-item-top">
+                        <div class="card-label">CashFlow Debit Card</div>
+                        <div class="card-icon">💳</div>
+                    </div>
+                    <div class="card-number">•••• •••• •••• 4829</div>
+                    <div class="card-footer">
+                        <div class="card-name">Damon Pleis</div>
+                        <div>12/28</div>
+                    </div>
+                </div>
             </div>
-            <div class="nav-item" onclick="switchTab('tasks')">
-                <div class="nav-icon">🎁</div>
-                <div class="nav-label">Rewards</div>
-            </div>
-            <div class="nav-item" onclick="showOptions()">
-                <div class="nav-icon">⚙️</div>
-                <div class="nav-label">More</div>
+
+            <!-- Withdraw Button -->
+            <button class="withdraw-btn" onclick="initiateWithdrawal()" id="withdrawBtn">
+                <span class="spinner-small" id="withdrawSpinner"></span>
+                <span id="withdrawText">💸 Withdraw Funds</span>
+            </button>
+
+            <!-- Recent Activity -->
+            <div class="activity-section">
+                <div class="activity-header">📊 Recent Activity</div>
+                <div class="activity-item">
+                    <div class="activity-left">
+                        <div class="activity-icon">💰</div>
+                        <div class="activity-info">
+                            <h4>Deposit Received</h4>
+                            <p>Today at 2:45 PM</p>
+                        </div>
+                    </div>
+                    <div class="activity-amount">+$1,200.00</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-left">
+                        <div class="activity-icon">🛍️</div>
+                        <div class="activity-info">
+                            <h4>Online Purchase</h4>
+                            <p>Yesterday at 10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="activity-amount">-$89.99</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-left">
+                        <div class="activity-icon">💳</div>
+                        <div class="activity-info">
+                            <h4>ATM Withdrawal</h4>
+                            <p>2 days ago</p>
+                        </div>
+                    </div>
+                    <div class="activity-amount">-$200.00</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Register Modal -->
-    <div id="registerModal" class="modal">
+    <!-- Face Verification Modal -->
+    <div class="modal" id="faceVerificationModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('registerModal')">×</button>
-            <h2 class="modal-title">Create Account</h2>
-            <form id="registerForm" onsubmit="handleRegister(event)">
-                <div class="form-group">
-                    <label class="form-label">Full Name *</label>
-                    <input type="text" class="form-input" id="fullName" required>
+            <div class="modal-close" onclick="closeFaceVerification()">✕</div>
+            <div class="modal-header">Face Verification</div>
+
+            <div class="verification-container">
+                <div class="verification-title">Verify Your Identity</div>
+                <div class="verification-subtitle">Position your face in the frame and ensure good lighting</div>
+
+                <div class="camera-container">
+                    <video id="videoFeed"></video>
+                    <div class="camera-placeholder" id="cameraPlaceholder">
+                        <div class="camera-icon">📷</div>
+                        <div class="camera-text">Camera Ready</div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Email Address *</label>
-                    <input type="email" class="form-input" id="email" required>
+
+                <div class="verification-buttons">
+                    <button class="verify-btn" onclick="startFaceCapture()">📸 Start Scan</button>
+                    <button class="verify-cancel-btn" onclick="closeFaceVerification()">Cancel</button>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Password *</label>
-                    <input type="password" class="form-input" id="password" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Confirm Password *</label>
-                    <input type="password" class="form-input" id="confirmPassword" required>
-                </div>
-                <div class="form-checkbox">
-                    <input type="checkbox" id="termsCheck" required>
-                    <label for="termsCheck">I agree to the Terms & Conditions</label>
-                </div>
-                <button type="submit" class="action-form-btn">Create Account</button>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <!-- Verification Result Modal -->
+    <div class="modal" id="verificationResultModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('loginModal')">×</button>
-            <h2 class="modal-title">Login</h2>
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label class="form-label">Email Address *</label>
-                    <input type="email" class="form-input" id="loginEmail" required>
+            <div class="modal-close" onclick="closeVerificationResult()">✕</div>
+            <div class="modal-header">Verification Complete</div>
+
+            <div class="verification-result">
+                <div class="result-icon">❌</div>
+                <div class="result-title">Verification Failed</div>
+                <div class="result-text">We couldn't verify your face at this time. Please try alternative verification methods or contact support.</div>
+            </div>
+
+            <div class="alternative-section">
+                <div class="alternative-title">
+                    <span>✓</span>
+                    <span>Alternative Methods</span>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Password *</label>
-                    <input type="password" class="form-input" id="loginPassword" required>
+
+                <div class="alternative-option" onclick="selectAlternative('email')">
+                    <div class="alternative-icon">📧</div>
+                    <div class="alternative-text">
+                        <div class="alternative-method-name">Email Verification</div>
+                        <div class="alternative-method-desc">Verify via secure email link</div>
+                    </div>
+                    <div class="alternative-arrow">›</div>
                 </div>
-                <button type="submit" class="action-form-btn">Login</button>
-            </form>
+
+                <div class="alternative-option" onclick="selectAlternative('support')">
+                    <div class="alternative-icon">👤</div>
+                    <div class="alternative-text">
+                        <div class="alternative-method-name">Contact Support</div>
+                        <div class="alternative-method-desc">Get help from our team</div>
+                    </div>
+                    <div class="alternative-arrow">›</div>
+                </div>
+            </div>
+
+            <button class="verify-btn" style="width: 100%; margin-top: 20px;" onclick="useAlternativeMethod()">Use Alternative Method</button>
         </div>
     </div>
 
-    <!-- Deposit Modal -->
-    <div id="depositModal" class="modal">
+    <!-- Withdrawal Receipt Modal -->
+    <div class="modal" id="withdrawalModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('depositModal')">×</button>
-            <h2 class="modal-title">Deposit Funds</h2>
-            
-            <div class="form-group">
-                <label class="form-label">Select Investment Plan</label>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                    <div class="payment-option" onclick="selectAmount(50)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$50</div>
-                    </div>
-                    <div class="payment-option" onclick="selectAmount(500)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$500</div>
-                    </div>
-                    <div class="payment-option" onclick="selectAmount(1000)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$1000</div>
-                    </div>
-                    <div class="payment-option" onclick="selectAmount(4000)">
-                        <div style="font-weight: 700; color: #667eea; font-size: 20px;">$4000</div>
-                    </div>
+            <div class="modal-close" onclick="closeWithdrawalModal()">✕</div>
+
+            <div class="receipt-container">
+                <div class="receipt-header">
+                    <div class="receipt-logo">💚</div>
+                    <div class="receipt-title">Withdrawal Initiated</div>
+                    <div class="receipt-subtitle">CashFlow Digital Wallet</div>
+                    <div class="receipt-status">⏳ PENDING</div>
+                </div>
+
+                <div class="receipt-row">
+                    <span class="receipt-label">Account Holder:</span>
+                    <span class="receipt-value">Damon Pleis</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Member ID:</span>
+                    <span class="receipt-value">CF-DP-2024</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Date & Time:</span>
+                    <span class="receipt-value" id="receiptDate"></span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Transaction ID:</span>
+                    <span class="receipt-value">TXN-2024-WD-5847</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Withdrawal Amount:</span>
+                    <span class="receipt-value" style="color: #00a86b; font-size: 16px;">$6,000.00 USD</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Status:</span>
+                    <span class="receipt-value" style="color: #f59e0b;">PENDING PROCESSING</span>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Select Payment Method</label>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                    <div class="payment-option" onclick="selectPayment('usdt')">
-                        <div class="payment-icon">💵</div>
-                        <div class="payment-name">USDT</div>
-                    </div>
-                    <div class="payment-option" onclick="selectPayment('btc')">
-                        <div class="payment-icon">₿</div>
-                        <div class="payment-name">Bitcoin</div>
-                    </div>
+            <!-- Charge Notice -->
+            <div class="charge-notice">
+                <div class="charge-title">
+                    <span>⚠️</span>
+                    <span>Processing Fee Required</span>
+                </div>
+
+                <div class="charge-content">
+                    <p><strong>To complete your withdrawal, a processing fee is required.</strong></p>
+
+                    <p><strong>This fee covers:</strong></p>
+                    <ul>
+                        <li>🔐 Advanced Identity Verification</li>
+                        <li>🏦 Bank Transfer Processing</li>
+                        <li>💳 Payment Gateway Security</li>
+                        <li>📋 Fraud Prevention & Compliance</li>
+                        <li>⚡ Priority Processing (24-48 hours)</li>
+                    </ul>
+                </div>
+
+                <div class="charge-amount">$365.00 USD</div>
+
+                <div class="charge-explanation">
+                    <strong>📌 How It Works:</strong><br>
+                    ✓ Pay the $365 processing fee to activate<br>
+                    ✓ Withdrawal will be approved immediately<br>
+                    ✓ Funds transfer to your bank account<br>
+                    ✓ Expected delivery: 24-48 hours<br>
+                    ✓ Receive tracking updates via SMS/Email
                 </div>
             </div>
 
-            <div id="usdtAddress" class="address-box">
-                <div class="address-label">💳 USDT Address (TRC20)</div>
-                <div class="address-content">
-                    <div class="address-text">TEUh5LumZf8UDhGhZNbSmSKwQ6945cvx7o</div>
-                    <button type="button" class="copy-btn" onclick="copyAddress('TEUh5LumZf8UDhGhZNbSmSKwQ6945cvx7o')">Copy</button>
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <div class="contact-title">
+                    <span>📞</span>
+                    <span>Complete Your Withdrawal</span>
                 </div>
-                <div class="info-text">💡 Send exactly the amount for your chosen plan. Payment will be verified automatically.</div>
+                <div class="contact-text">
+                    Your withdrawal request is ready. Contact our support team to complete the $365 processing fee and finalize your $6,000 withdrawal.
+                </div>
+                <a href="https://t.me/AGGRESSIVE_POWER1" target="_blank" class="contact-link">
+                    <span>💬</span>
+                    <span>Contact Support on Telegram</span>
+                </a>
             </div>
 
-            <div id="btcAddress" class="address-box">
-                <div class="address-label">₿ Bitcoin Address</div>
-                <div class="address-content">
-                    <div class="address-text">bc1q55cdvhaxvnzvvsnrwplszg0z7q8k4hkztxe5n5</div>
-                    <button type="button" class="copy-btn" onclick="copyAddress('bc1q55cdvhaxvnzvvsnrwplszg0z7q8k4hkztxe5n5')">Copy</button>
-                </div>
-                <div class="info-text">💡 Send exactly the amount for your chosen plan. Payment will be verified automatically.</div>
-            </div>
-
-            <button class="action-form-btn" onclick="handlePaymentConfirm()" id="paidBtn" disabled>I Have Paid - Proceed to Support</button>
-        </div>
-    </div>
-
-    <!-- Withdraw Modal -->
-    <div id="withdrawModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('withdrawModal')">×</button>
-            <h2 class="modal-title">Withdraw Funds</h2>
-            <div class="form-group">
-                <label class="form-label">Available Balance</label>
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 24px; border-radius: 12px; text-align: center; margin-bottom: 20px;">
-                    <div style="font-size: 14px; opacity: 0.85; margin-bottom: 8px;">Available to Withdraw</div>
-                    <div style="font-size: 36px; font-weight: 700;" id="withdrawBalance">$0.00</div>
+            <!-- Info Boxes -->
+            <div class="info-box">
+                <div class="info-icon">✓</div>
+                <div class="info-text">
+                    <h4>Your withdrawal is secure</h4>
+                    <p>All transactions are encrypted and verified for your protection.</p>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Enter Amount *</label>
-                <input type="number" class="form-input" id="withdrawAmount" placeholder="e.g., 100" step="0.01" min="0">
+
+            <div class="info-box">
+                <div class="info-icon">🔔</div>
+                <div class="info-text">
+                    <h4>Real-time updates</h4>
+                    <p>You'll receive notifications when your withdrawal is processed and funds arrive.</p>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Bank Name</label>
-                <input type="text" class="form-input" id="bankName" placeholder="Your Bank">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Account Number</label>
-                <input type="text" class="form-input" id="accountNumber" placeholder="Your Account Number">
-            </div>
-            <button class="action-form-btn" onclick="handleWithdraw()">Request Withdrawal</button>
         </div>
     </div>
 
     <script>
-        let currentUser = null;
-        let selectedAmount = null;
-        let selectedPayment = null;
+        // Update receipt date
+        function updateReceiptDate() {
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const date = new Date().toLocaleDateString('en-US', options);
+            document.getElementById('receiptDate').textContent = date;
+        }
 
-        // Initialize on page load
+        // Hide loading screen
         window.addEventListener('load', () => {
-            const savedUser = localStorage.getItem('dthUserSession');
-            if (savedUser) {
-                try {
-                    currentUser = JSON.parse(savedUser);
-                    showDashboard();
-                } catch (e) {
-                    console.error('Error loading user:', e);
-                    localStorage.removeItem('dthUserSession');
-                }
-            }
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.classList.add('hidden');
+            }, 2500);
         });
 
-        function showRegisterModal() {
-            document.getElementById('registerModal').classList.add('show');
-        }
+        // Initiate withdrawal
+        function initiateWithdrawal() {
+            const btn = document.getElementById('withdrawBtn');
+            const spinner = document.getElementById('withdrawSpinner');
+            const text = document.getElementById('withdrawText');
 
-        function showLoginModal() {
-            document.getElementById('loginModal').classList.add('show');
-        }
-
-        function showDepositModal() {
-            document.getElementById('depositModal').classList.add('show');
-            resetDepositForm();
-        }
-
-        function showWithdrawModal() {
-            if (!currentUser || currentUser.balance <= 0) {
-                showNotification('No Funds Available', 'You don\'t have any balance or active work available for withdrawal. Contact support at https://t.me/customer_assist01', 'error');
-                return;
-            }
-            document.getElementById('withdrawBalance').textContent = '$' + currentUser.balance.toFixed(2);
-            document.getElementById('withdrawModal').classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
-        }
-
-        function handleRegister(e) {
-            e.preventDefault();
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                showNotification('Error', 'Passwords do not match!', 'error');
-                return;
-            }
-
-            const userData = {
-                name: fullName,
-                email: email,
-                password: password,
-                id: 'DTH' + Math.random().toString(36).substr(2, 9).toUpperCase(),
-                date: new Date().toLocaleDateString(),
-                balance: 0,
-                withdrawn: 0,
-                createdAt: new Date().getTime()
-            };
-
-            localStorage.setItem('dthUserSession', JSON.stringify(userData));
-            currentUser = userData;
-            closeModal('registerModal');
-            showDashboard();
-            document.getElementById('registerForm').reset();
-            showNotification('Success', `Welcome ${fullName}! Your account has been created successfully.`, 'success');
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-
-            const savedUser = JSON.parse(localStorage.getItem('dthUserSession') || '{}');
-            
-            if (savedUser.email === email && savedUser.password === password) {
-                currentUser = savedUser;
-                closeModal('loginModal');
-                showDashboard();
-                document.getElementById('loginForm').reset();
-                showNotification('Success', `Welcome back, ${currentUser.name}!`, 'success');
-            } else {
-                showNotification('Error', 'Invalid email or password!', 'error');
-            }
-        }
-
-        function showDashboard() {
-            document.getElementById('landingPage').style.display = 'none';
-            document.getElementById('dashboardPage').style.display = 'block';
-            document.getElementById('navLinks').style.display = 'none';
-            document.getElementById('userNavInfo').style.display = 'flex';
-            updateDashboard();
-        }
-
-        function hideDashboard() {
-            document.getElementById('dashboardPage').style.display = 'none';
-            document.getElementById('landingPage').style.display = 'block';
-            document.getElementById('navLinks').style.display = 'flex';
-            document.getElementById('userNavInfo').style.display = 'none';
-        }
-
-        function updateDashboard() {
-            if (!currentUser) {
-                currentUser = JSON.parse(localStorage.getItem('dthUserSession'));
-            }
-            
-            if (!currentUser) return;
-
-            document.getElementById('welcomeTitle').textContent = `Welcome back, ${currentUser.name}!`;
-            document.getElementById('dashName').textContent = currentUser.name;
-            document.getElementById('dashEmail').textContent = currentUser.email;
-            document.getElementById('dashDate').textContent = currentUser.date;
-            document.getElementById('dashId').textContent = currentUser.id;
-            document.getElementById('navUserName').textContent = `${currentUser.name}`;
-            document.getElementById('balanceAmount').textContent = '$' + (currentUser.balance || 0).toFixed(2);
-            document.getElementById('activeTasks').textContent = (currentUser.balance > 0 ? Math.floor(currentUser.balance / 100) : 0) + ' Tasks Running';
-        }
-
-        function logout() {
-            localStorage.removeItem('dthUserSession');
-            currentUser = null;
-            hideDashboard();
-            document.getElementById('registerForm').reset();
-            document.getElementById('loginForm').reset();
-            showNotification('Success', 'You have been successfully logged out.', 'success');
-        }
-
-        function selectAmount(amount) {
-            selectedAmount = amount;
-            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
-                el.classList.remove('selected');
-            });
-            event.target.closest('.payment-option').classList.add('selected');
-            updatePaidButton();
-        }
-
-        function selectPayment(method) {
-            selectedPayment = method;
-            document.querySelectorAll('#depositModal .form-group:nth-of-type(2) .payment-option').forEach(el => {
-                el.classList.remove('selected');
-            });
-            event.target.closest('.payment-option').classList.add('selected');
-            
-            document.getElementById('usdtAddress').classList.remove('show');
-            document.getElementById('btcAddress').classList.remove('show');
-            
-            if (method === 'usdt') {
-                document.getElementById('usdtAddress').classList.add('show');
-            } else if (method === 'btc') {
-                document.getElementById('btcAddress').classList.add('show');
-            }
-            updatePaidButton();
-        }
-
-        function updatePaidButton() {
-            const paidBtn = document.getElementById('paidBtn');
-            if (selectedAmount && selectedPayment) {
-                paidBtn.disabled = false;
-            }
-        }
-
-        function copyAddress(address) {
-            navigator.clipboard.writeText(address).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = '✓ Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
-            });
-        }
-
-        function handlePaymentConfirm() {
-            if (!selectedAmount || !selectedPayment) {
-                showNotification('Incomplete', 'Please select both amount and payment method', 'error');
-                return;
-            }
-
-            const btn = document.getElementById('paidBtn');
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Processing...';
+            spinner.classList.add('show');
+            text.textContent = 'Processing...';
 
             setTimeout(() => {
-                currentUser.balance += selectedAmount;
-                localStorage.setItem('dthUserSession', JSON.stringify(currentUser));
-                
-                showNotification('Payment Received', `Your ${selectedPayment.toUpperCase()} payment of $${selectedAmount} has been received. Our team will verify and process within 24 hours.`, 'success');
-                
-                closeModal('depositModal');
-                updateDashboard();
-                selectedAmount = null;
-                selectedPayment = null;
-                resetDepositForm();
-                
-                window.open('https://t.me/customer_assist01', '_blank');
-                
+                spinner.classList.remove('show');
+                text.textContent = '💸 Withdraw Funds';
                 btn.disabled = false;
-                btn.innerHTML = 'I Have Paid - Proceed to Support';
+
+                // Show face verification modal
+                document.getElementById('faceVerificationModal').classList.add('show');
             }, 2000);
         }
 
-        function handleWithdraw() {
-            const amount = parseFloat(document.getElementById('withdrawAmount').value);
-            const bankName = document.getElementById('bankName').value;
-            const accountNumber = document.getElementById('accountNumber').value;
-
-            if (!amount || amount <= 0) {
-                showNotification('Invalid Amount', 'Please enter a valid withdrawal amount', 'error');
-                return;
-            }
-
-            if (amount > currentUser.balance) {
-                showNotification('Insufficient Balance', `You can only withdraw up to $${currentUser.balance.toFixed(2)}`, 'error');
-                return;
-            }
-
-            if (!bankName || !accountNumber) {
-                showNotification('Incomplete', 'Please provide bank name and account number', 'error');
-                return;
-            }
-
-            const btn = event.target;
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span> Processing...';
-
+        // Start face capture
+        function startFaceCapture() {
             setTimeout(() => {
-                currentUser.balance -= amount;
-                currentUser.withdrawn += amount;
-                localStorage.setItem('dthUserSession', JSON.stringify(currentUser));
-                
-                showNotification('Withdrawal Requested', `Your withdrawal request of $${amount.toFixed(2)} has been submitted. You will receive your funds within 24-48 hours.`, 'success');
-                
-                closeModal('withdrawModal');
-                updateDashboard();
-                document.getElementById('withdrawAmount').value = '';
-                document.getElementById('bankName').value = '';
-                document.getElementById('accountNumber').value = '';
-                
-                btn.disabled = false;
-                btn.innerHTML = 'Request Withdrawal';
+                // Simulate verification failure
+                document.getElementById('faceVerificationModal').classList.remove('show');
+                document.getElementById('verificationResultModal').classList.add('show');
             }, 2000);
         }
 
-        function resetDepositForm() {
-            selectedAmount = null;
-            selectedPayment = null;
-            document.querySelectorAll('#depositModal .payment-option').forEach(el => {
-                el.classList.remove('selected');
-            });
-            document.getElementById('usdtAddress').classList.remove('show');
-            document.getElementById('btcAddress').classList.remove('show');
-            document.getElementById('paidBtn').disabled = true;
+        // Close face verification
+        function closeFaceVerification() {
+            document.getElementById('faceVerificationModal').classList.remove('show');
         }
 
-        function selectPlan(amount) {
-            if (!currentUser) {
-                showRegisterModal();
-            } else {
-                selectedAmount = amount;
-                showDepositModal();
-            }
+        // Close verification result
+        function closeVerificationResult() {
+            document.getElementById('verificationResultModal').classList.remove('show');
         }
 
-        function scrollTo(section) {
-            const element = document.getElementById(section);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+        // Select alternative
+        function selectAlternative(method) {
+            // Continue to withdrawal receipt
+            useAlternativeMethod();
         }
 
-        function switchTab(tab) {
-            document.querySelectorAll('#dashboardPage .tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('#dashboardPage .nav-item').forEach(item => item.classList.remove('active'));
-            event.target.classList.add('active');
-            event.currentTarget?.closest('.nav-item')?.classList.add('active');
-
-            if (tab === 'crypto') {
-                document.getElementById('cryptoContent').style.display = 'block';
-                document.getElementById('watchlistContent').style.display = 'none';
-                document.getElementById('tasksContent').style.display = 'none';
-            } else if (tab === 'watchlist') {
-                document.getElementById('cryptoContent').style.display = 'none';
-                document.getElementById('watchlistContent').style.display = 'block';
-                document.getElementById('tasksContent').style.display = 'none';
-            } else if (tab === 'tasks') {
-                document.getElementById('cryptoContent').style.display = 'none';
-                document.getElementById('watchlistContent').style.display = 'none';
-                document.getElementById('tasksContent').style.display = 'block';
-            }
+        // Use alternative method
+        function useAlternativeMethod() {
+            document.getElementById('verificationResultModal').classList.remove('show');
+            updateReceiptDate();
+            document.getElementById('withdrawalModal').classList.add('show');
         }
 
-        function showActionButton(action) {
-            showNotification('Coming Soon', `${action.charAt(0).toUpperCase() + action.slice(1)} feature coming soon!`, 'success');
-        }
-
-        function showOptions() {
-            showNotification('Settings', 'Settings menu coming soon!', 'success');
-        }
-
-        function showNotification(title, message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div class="notification-title">${title}</div>
-                <div class="notification-content">${message}</div>
-            `;
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.style.animation = 'slideIn 0.4s ease reverse';
-                setTimeout(() => {
-                    notification.remove();
-                }, 400);
-            }, 5000);
+        // Close withdrawal modal
+        function closeWithdrawalModal() {
+            document.getElementById('withdrawalModal').classList.remove('show');
         }
     </script>
 </body>
